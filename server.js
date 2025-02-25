@@ -2,6 +2,7 @@ import express from 'express';
 import fs from 'fs';
 import path from 'path';
 import cors from 'cors';
+import { config } from 'dotenv';
 
 const app = express();
 const port = 3000;
@@ -9,12 +10,14 @@ const port = 3000;
 app.use(express.json());
 app.use(cors("*"));
 
-const dirname = "C:\\Users\\Yup4uwe\\Desktop\\NewFolder\\Myprojects\\Recommendation\\classifier\\";
+config();
+
+const dirname = process.env.DIRNAME;
 const directoryPath = path.join(dirname, "..", 'images');
 
 // Serve static files from the "images" directory
 app.use('/images', express.static(directoryPath));
-app.use(express.static(path.join(dirname, 'static')));
+app.use("/static", express.static(path.join(dirname, 'static')));
 app.use("/data", express.static(path.join(dirname, 'data')));
 
 app.get('/', (req, res) => {

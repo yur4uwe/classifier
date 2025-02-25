@@ -1,5 +1,5 @@
-const port = "8080"
-const ipv4 = "172.16.206.11"
+const port = "3000"
+const ipv4 = "localhost"
 
 const getNextOutfit = async () => {
     let directory = localStorage.getItem("current_outfit");
@@ -198,6 +198,8 @@ document.getElementById('next-outfit').addEventListener('click', async () => {
         },
         body: JSON.stringify({ currentOutfit }) // Ensure the body is correctly formatted as JSON
     });
+
+    document.querySelectorAll(".condition-checkbox").forEach(checkbox => checkbox.checked = false);
 
     localStorage.removeItem("current_outfit");
 
