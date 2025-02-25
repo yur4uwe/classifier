@@ -1,0 +1,50 @@
+{
+    "temperature": [
+        "Freezing",
+        "Cold",
+        "Cool",
+        "Mild",
+        "Warm",
+        "Hot",
+        "Very Hot"
+    ],
+    "season": [
+        "Winter",
+        "Spring",
+        "Summer",
+        "Autumn",
+        "All Seasons",
+        "Indoor"
+    ],
+    "humidity": [
+        "Dry",
+        "Moderate Humidity",
+        "Humid",
+        "Muggy"
+    ],
+    "precipitation": [
+        "No Precipitation",
+        "Drizzle",
+        "Rain",
+        "Heavy Rain",
+        "Thunderstorm",
+        "Snow",
+        "Heavy Snow",
+        "Sleet"
+    ],
+    "wind": [
+        "Calm",
+        "Breezy",
+        "Windy",
+        "Gale",
+        "No Wind"
+    ],
+    "sky": [
+        "Clear",
+        "Partly Cloudy",
+        "Mostly Cloudy",
+        "Overcast",
+        "Foggy",
+        "Indoor"
+    ]
+}
