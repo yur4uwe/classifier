@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 
-const directoryPath = "C:\\Users\\tsus1\\Yura Files\\classifier";
+const directoryPath = "C:\\Users\\Yup4uwe\\Desktop\\NewFolder\\Myprojects\\Recommendation\\images";
 
 const directories = fs.readFileSync('./data/directories.json');
 const directoriesObject = JSON.parse(directories);

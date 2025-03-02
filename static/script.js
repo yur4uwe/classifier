@@ -1,17 +1,17 @@
-const port = "3000"
-const ipv4 = "localhost"
+
+const server_ip = window.location.origin;
 
 const getNextOutfit = async () => {
     let directory = localStorage.getItem("current_outfit");
 
     if (!directory) {
-        directory = await fetch(`http://${ipv4}:${port}/next-outfit`)
+        directory = await fetch(`${server_ip}/next-outfit`)
             .then(response => response.json())
 
         localStorage.setItem("current_outfit", directory);
     }
 
-    const images = await fetch(`http://${ipv4}:${port}/images/${directory}`)
+    const images = await fetch(`${server_ip}/images/${directory}`)
         .then(response => response.json())
         .then(files => files.filter(file => file.endsWith('.jpg') || file.endsWith('.png')));
 
@@ -26,7 +26,7 @@ const getNextOutfit = async () => {
         imageContainer.classList.add('image-container');
 
         const imageElement = document.createElement('img');
-        imageElement.src = `http://${ipv4}:${port}/images/${directory}/${image}`;
+        imageElement.src = `${server_ip}/images/${directory}/${image}`;
 
         const excludeButton = document.createElement('button');
         excludeButton.classList.add('exclude-button');
@@ -183,7 +183,7 @@ document.getElementById('next-outfit').addEventListener('click', async () => {
 
     console.log(resultBody);
 
-    await fetch(`http://${ipv4}:${port}/submit`, {
+    await fetch(`${server_ip}/submit`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -191,7 +191,7 @@ document.getElementById('next-outfit').addEventListener('click', async () => {
         body: resultBody
     });
 
-    await fetch(`http://${ipv4}:${port}/mark-done`, {
+    await fetch(`${server_ip}/mark-done`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
