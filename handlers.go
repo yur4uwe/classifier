@@ -81,11 +81,12 @@ func nextOutfitHandler(w http.ResponseWriter, r *http.Request) {
 
 	var nextOutfit string
 	var numOfClassified int
+	var outfitSelected = false
 	for directory, classified := range directories {
-		if !classified && !slices.Contains(pending, directory) {
+		if !classified && !slices.Contains(pending, directory) && !outfitSelected {
 			nextOutfit = directory
 			pending = append(pending, directory)
-			break
+			outfitSelected = true
 		}
 		if classified {
 			numOfClassified++
