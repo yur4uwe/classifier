@@ -3,10 +3,11 @@ package main
 import (
 	"fmt"
 	"net/http"
+	"os"
 	"path/filepath"
 )
 
-var dirname = "C:\\Users\\Yup4uwe\\Desktop\\NewFolder\\Myprojects\\Recommendation\\classifier\\"
+var dirname = os.Getenv("DIRNAME")
 var directoryPath = filepath.Join(dirname, "..", "images")
 
 func main() {
