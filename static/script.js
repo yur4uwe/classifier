@@ -1,29 +1,17 @@
-<<<<<<< HEAD
-const port = "8080"
-=======
 
 const server_ip = window.location.origin;
->>>>>>> f13d90f8504f4c0a11db070b397c9475e40e642b
 
 const getNextOutfit = async () => {
     let directory = localStorage.getItem("current_outfit");
 
     if (!directory) {
-<<<<<<< HEAD
-        directory = await fetch(`http://localhost:${port}/next-outfit`)
-=======
         directory = await fetch(`${server_ip}/next-outfit`)
->>>>>>> f13d90f8504f4c0a11db070b397c9475e40e642b
             .then(response => response.json())
 
         localStorage.setItem("current_outfit", directory);
     }
 
-<<<<<<< HEAD
-    const images = await fetch(`http://localhost:${port}/images/${directory}`)
-=======
     const images = await fetch(`${server_ip}/images/${directory}`)
->>>>>>> f13d90f8504f4c0a11db070b397c9475e40e642b
         .then(response => response.json())
         .then(files => files.filter(file => file.endsWith('.jpg') || file.endsWith('.png')));
 
@@ -38,11 +26,7 @@ const getNextOutfit = async () => {
         imageContainer.classList.add('image-container');
 
         const imageElement = document.createElement('img');
-<<<<<<< HEAD
-        imageElement.src = `http://localhost:${port}/images/${directory}/${image}`;
-=======
         imageElement.src = `${server_ip}/images/${directory}/${image}`;
->>>>>>> f13d90f8504f4c0a11db070b397c9475e40e642b
 
         const excludeButton = document.createElement('button');
         excludeButton.classList.add('exclude-button');
@@ -199,11 +183,7 @@ document.getElementById('next-outfit').addEventListener('click', async () => {
 
     console.log(resultBody);
 
-<<<<<<< HEAD
-    await fetch(`http://localhost:${port}/submit`, {
-=======
     await fetch(`${server_ip}/submit`, {
->>>>>>> f13d90f8504f4c0a11db070b397c9475e40e642b
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -211,11 +191,7 @@ document.getElementById('next-outfit').addEventListener('click', async () => {
         body: resultBody
     });
 
-<<<<<<< HEAD
-    await fetch(`http://localhost:${port}/mark-done`, {
-=======
     await fetch(`${server_ip}/mark-done`, {
->>>>>>> f13d90f8504f4c0a11db070b397c9475e40e642b
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -223,11 +199,8 @@ document.getElementById('next-outfit').addEventListener('click', async () => {
         body: JSON.stringify({ currentOutfit }) // Ensure the body is correctly formatted as JSON
     });
 
-<<<<<<< HEAD
-=======
     document.querySelectorAll(".condition-checkbox").forEach(checkbox => checkbox.checked = false);
 
->>>>>>> f13d90f8504f4c0a11db070b397c9475e40e642b
     localStorage.removeItem("current_outfit");
 
     console.log('JSON file has been saved.');
