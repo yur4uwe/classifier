@@ -3,4 +3,6 @@ package-lock.json
 data/results.json
 data/directories.json
 data/pending.json
+data/weather.json
+data/matching.json
 .env
