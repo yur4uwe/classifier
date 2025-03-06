@@ -1,0 +1,6 @@
+node_modules/
+package-lock.json
+data/results.json
+data/directories.json
+data/pending.json
+.env

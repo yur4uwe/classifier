@@ -1,0 +1,258 @@
+[
+    {
+        "temperature": "Freezing",
+        "season": "Winter",
+        "humidity": "Dry",
+        "precipitation": "Snow",
+        "wind": "Breezy",
+        "sky": "Overcast"
+    },
+    {
+        "temperature": "Cold",
+        "season": "Winter",
+        "humidity": "Dry",
+        "precipitation": "Heavy Snow",
+        "wind": "Windy",
+        "sky": "Mostly Cloudy"
+    },
+    {
+        "temperature": "Freezing",
+        "season": "Winter",
+        "humidity": "Moderate Humidity",
+        "precipitation": "Sleet",
+        "wind": "Gale",
+        "sky": "Foggy"
+    },
+    {
+        "temperature": "Cold",
+        "season": "Winter",
+        "humidity": "Dry",
+        "precipitation": "No Precipitation",
+        "wind": "Calm",
+        "sky": "Clear"
+    },
+    {
+        "temperature": "Cool",
+        "season": "Spring",
+        "humidity": "Moderate Humidity",
+        "precipitation": "Drizzle",
+        "wind": "Breezy",
+        "sky": "Mostly Cloudy"
+    },
+    {
+        "temperature": "Mild",
+        "season": "Spring",
+        "humidity": "Humid",
+        "precipitation": "Rain",
+        "wind": "Windy",
+        "sky": "Overcast"
+    },
+    {
+        "temperature": "Cool",
+        "season": "Spring",
+        "humidity": "Dry",
+        "precipitation": "No Precipitation",
+        "wind": "Calm",
+        "sky": "Partly Cloudy"
+    },
+    {
+        "temperature": "Warm",
+        "season": "Summer",
+        "humidity": "Humid",
+        "precipitation": "Heavy Rain",
+        "wind": "Windy",
+        "sky": "Overcast"
+    },
+    {
+        "temperature": "Very Hot",
+        "season": "Summer",
+        "humidity": "Dry",
+        "precipitation": "No Precipitation",
+        "wind": "Calm",
+        "sky": "Clear"
+    },
+    {
+        "temperature": "Warm",
+        "season": "All Seasons",
+        "humidity": "Moderate Humidity",
+        "precipitation": "No Precipitation",
+        "wind": "Calm",
+        "sky": "Clear"
+    },
+    {
+        "temperature": "Hot",
+        "season": "Summer",
+        "humidity": "Muggy",
+        "precipitation": "Drizzle",
+        "wind": "Breezy",
+        "sky": "Partly Cloudy"
+    },
+    {
+        "temperature": "Cool",
+        "season": "Autumn",
+        "humidity": "Moderate Humidity",
+        "precipitation": "Rain",
+        "wind": "Breezy",
+        "sky": "Overcast"
+    },
+    {
+        "temperature": "Mild",
+        "season": "Autumn",
+        "humidity": "Humid",
+        "precipitation": "Drizzle",
+        "wind": "Windy",
+        "sky": "Mostly Cloudy"
+    },
+    {
+        "temperature": "Cool",
+        "season": "Autumn",
+        "humidity": "Dry",
+        "precipitation": "No Precipitation",
+        "wind": "Calm",
+        "sky": "Clear"
+    },
+    {
+        "temperature": "Mild",
+        "season": "Autumn",
+        "humidity": "Moderate Humidity",
+        "precipitation": "Sleet",
+        "wind": "Gale",
+        "sky": "Foggy"
+    },
+    {
+        "temperature": "Mild",
+        "season": "All Seasons",
+        "humidity": "Moderate Humidity",
+        "precipitation": "Rain",
+        "wind": "Breezy",
+        "sky": "Mostly Cloudy"
+    },
+    {
+        "temperature": "Cool",
+        "season": "All Seasons",
+        "humidity": "Dry",
+        "precipitation": "No Precipitation",
+        "wind": "Calm",
+        "sky": "Clear"
+    },
+    {
+        "temperature": "Mild",
+        "season": "Indoor",
+        "humidity": "Moderate Humidity",
+        "precipitation": "No Precipitation",
+        "wind": "No Wind",
+        "sky": "Indoor"
+    },
+    {
+        "temperature": "Warm",
+        "season": "Indoor",
+        "humidity": "Dry",
+        "precipitation": "No Precipitation",
+        "wind": "No Wind",
+        "sky": "Indoor"
+    },
+    {
+        "temperature": "Cool",
+        "season": "Indoor",
+        "humidity": "Moderate Humidity",
+        "precipitation": "No Precipitation",
+        "wind": "No Wind",
+        "sky": "Indoor"
+    },
+    {
+        "temperature": "Freezing",
+        "season": "Winter",
+        "humidity": "Dry",
+        "precipitation": "Heavy Snow",
+        "wind": "Gale",
+        "sky": "Foggy"
+    },
+    {
+        "temperature": "Hot",
+        "season": "Summer",
+        "humidity": "Dry",
+        "precipitation": "No Precipitation",
+        "wind": "Calm",
+        "sky": "Clear"
+    },
+    {
+        "temperature": "Cold",
+        "season": "Autumn",
+        "humidity": "Humid",
+        "precipitation": "Sleet",
+        "wind": "Windy",
+        "sky": "Overcast"
+    },
+    {
+        "temperature": "Mild",
+        "season": "Spring",
+        "humidity": "Moderate Humidity",
+        "precipitation": "No Precipitation",
+        "wind": "Calm",
+        "sky": "Partly Cloudy"
+    },
+    {
+        "temperature": "Warm",
+        "season": "Summer",
+        "humidity": "Humid",
+        "precipitation": "Drizzle",
+        "wind": "Breezy",
+        "sky": "Mostly Cloudy"
+    },
+    {
+        "temperature": "Cool",
+        "season": "Autumn",
+        "humidity": "Dry",
+        "precipitation": "No Precipitation",
+        "wind": "Calm",
+        "sky": "Clear"
+    },
+    {
+        "temperature": "Cool",
+        "season": "Spring",
+        "humidity": "Humid",
+        "precipitation": "Rain",
+        "wind": "Windy",
+        "sky": "Foggy"
+    },
+    {
+        "temperature": "Warm",
+        "season": "Spring",
+        "humidity": "Moderate Humidity",
+        "precipitation": "No Precipitation",
+        "wind": "Calm",
+        "sky": "Clear"
+    },
+    {
+        "temperature": "Warm",
+        "season": "Summer",
+        "humidity": "Dry",
+        "precipitation": "No Precipitation",
+        "wind": "Breezy",
+        "sky": "Partly Cloudy"
+    },
+    {
+        "temperature": "Warm",
+        "season": "All Seasons",
+        "humidity": "Moderate Humidity",
+        "precipitation": "No Precipitation",
+        "wind": "Calm",
+        "sky": "Clear"
+    },
+    {
+        "temperature": "Mild",
+        "season": "Autumn",
+        "humidity": "Humid",
+        "precipitation": "No Precipitation",
+        "wind": "Breezy",
+        "sky": "Mostly Cloudy"
+    },
+    {
+        "temperature": "Warm",
+        "season": "Indoor",
+        "humidity": "Moderate Humidity",
+        "precipitation": "No Precipitation",
+        "wind": "No Wind",
+        "sky": "Indoor"
+    }
+]
