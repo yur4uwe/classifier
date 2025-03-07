@@ -15,7 +15,7 @@ function turnIntoMatrix(data) {
  * @returns {Promise<Object | null>} Weather data for the given location or null if the location is invalid
  */
 async function getWeatherData(location) {
-    const weatherApi = `http://api.weatherapi.com/v1/forecast.json?key=cf0298ffa95d425e8a2155342253001&q=${location}&days=1&aqi=no&alerts=no`;
+    const weatherApi = `http://api.weatherapi.com/v1/forecast.json?key=cf0298ffa95d425e8a2155342253001&q=${location}&days=5&aqi=no&alerts=no`;
 
     const response = await fetch(weatherApi);
     const data = await response.json();
@@ -28,43 +28,88 @@ async function getWeatherData(location) {
 }
 
 function weatherData(data) {
+    /**
+     * @type {Array<{ 
+     *      temp_c: number, 
+     *      is_day: number, 
+     *      wind_kph: number, 
+     *      precip_mm: number, 
+     *      snow_cm: number, 
+     *      humidity: number, 
+     *      cloud: number, 
+     *      windchill_c: number, 
+     *      heatindex_c: number, 
+     *      will_it_rain: number, 
+     *      chance_of_rain: number, 
+     *      will_it_snow: number, 
+     *      chance_of_snow: number 
+     *  }[]>}
+     */
     let filteredData = [];
     for (const [key, value] of Object.entries(data)) {
         if (key === "current" || key === "location") {
             continue;
         }
         if (key === "forecast") {
-            filteredData = value.forecastday[0].hour;
+            for (const day of value.forecastday) {
+                filteredData.push(day.hour);
+            }
         }
     }
 
-    let restructuredData = {};
+    // console.log("Filtered data:", filteredData);
 
-    for (const key of Object.keys(filteredData[0])) {
+    /**
+     * @type {Array<{
+     *    temp_c: number[],
+     *    is_day: number[],
+     *    wind_kph: number[],
+     *    precip_mm: number[],
+     *    snow_cm: number[],
+     *    humidity: number[],
+     *    cloud: number[],
+     *    windchill_c: number[],
+     *    heatindex_c: number[],
+     *    will_it_rain: number[],
+     *    chance_of_rain: number[],
+     *    will_it_snow: number[],
+     *    chance_of_snow: number[]
+     * }>} sequentialData
+     */
+    let daySequence = {};
+
+    for (const key of Object.keys(filteredData[0][0])) {
         if (key.endsWith("_epoch") || key.endsWith("_f") || key.endsWith("_mph") || key.endsWith("_in") ||
             ["wind_degree", "wind_dir", "pressure_mb", "gust_kph", "dewpoint_c", "vis_km", "vis_miles", "uv", "time", "feelslike_c", "condition"].includes(key)) {
             continue;
         }
-        restructuredData[key] = [];
+        daySequence[key] = [];
     }
 
-    for (const obj of filteredData) {
-        for (const [key, value] of Object.entries(obj)) {
-            if (!restructuredData.hasOwnProperty(key)) {
-                continue;
-            }
-            if (key === "condition") {
-                restructuredData[key].push(value.text);
-            } else {
-                restructuredData[key].push(value);
+    const sequentialData = new Array(filteredData.length).fill(daySequence);
+
+    for (let i = 0; i < filteredData.length; i++) {
+        const day = filteredData[i];
+        const currentDay = sequentialData[i];
+        for (const obj of day) {
+            for (const [key, value] of Object.entries(obj)) {
+                if (!currentDay.hasOwnProperty(key)) {
+                    continue;
+                }
+                if (key === "condition") {
+                    currentDay[key].push(value.text);
+                } else {
+                    currentDay[key].push(value);
+                }
             }
         }
     }
-    return restructuredData;
+
+    return sequentialData;
 }
 
 // const weather = await (async () => {
-//     const weatherData = await getWeatherData();
+//     const weatherData = await getWeatherData("London");
 //     console.log(weatherData);
 //     return turnIntoMatrix(weatherData);
 // })();

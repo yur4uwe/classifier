@@ -1,7 +1,6 @@
 [
     {
         "temperature": "Freezing",
-        "season": "Winter",
         "humidity": "Dry",
         "precipitation": "Snow",
         "wind": "Breezy",
@@ -9,7 +8,6 @@
     },
     {
         "temperature": "Cold",
-        "season": "Winter",
         "humidity": "Dry",
         "precipitation": "Heavy Snow",
         "wind": "Windy",
@@ -17,15 +15,13 @@
     },
     {
         "temperature": "Freezing",
-        "season": "Winter",
         "humidity": "Moderate Humidity",
         "precipitation": "Sleet",
         "wind": "Gale",
-        "sky": "Foggy"
+        "sky": "Overcast"
     },
     {
         "temperature": "Cold",
-        "season": "Winter",
         "humidity": "Dry",
         "precipitation": "No Precipitation",
         "wind": "Calm",
@@ -33,7 +29,6 @@
     },
     {
         "temperature": "Cool",
-        "season": "Spring",
         "humidity": "Moderate Humidity",
         "precipitation": "Drizzle",
         "wind": "Breezy",
@@ -41,7 +36,6 @@
     },
     {
         "temperature": "Mild",
-        "season": "Spring",
         "humidity": "Humid",
         "precipitation": "Rain",
         "wind": "Windy",
@@ -49,7 +43,6 @@
     },
     {
         "temperature": "Cool",
-        "season": "Spring",
         "humidity": "Dry",
         "precipitation": "No Precipitation",
         "wind": "Calm",
@@ -57,7 +50,6 @@
     },
     {
         "temperature": "Warm",
-        "season": "Summer",
         "humidity": "Humid",
         "precipitation": "Heavy Rain",
         "wind": "Windy",
@@ -65,7 +57,6 @@
     },
     {
         "temperature": "Very Hot",
-        "season": "Summer",
         "humidity": "Dry",
         "precipitation": "No Precipitation",
         "wind": "Calm",
@@ -73,7 +64,6 @@
     },
     {
         "temperature": "Warm",
-        "season": "All Seasons",
         "humidity": "Moderate Humidity",
         "precipitation": "No Precipitation",
         "wind": "Calm",
@@ -81,7 +71,6 @@
     },
     {
         "temperature": "Hot",
-        "season": "Summer",
         "humidity": "Muggy",
         "precipitation": "Drizzle",
         "wind": "Breezy",
@@ -89,7 +78,6 @@
     },
     {
         "temperature": "Cool",
-        "season": "Autumn",
         "humidity": "Moderate Humidity",
         "precipitation": "Rain",
         "wind": "Breezy",
@@ -97,7 +85,6 @@
     },
     {
         "temperature": "Mild",
-        "season": "Autumn",
         "humidity": "Humid",
         "precipitation": "Drizzle",
         "wind": "Windy",
@@ -105,7 +92,6 @@
     },
     {
         "temperature": "Cool",
-        "season": "Autumn",
         "humidity": "Dry",
         "precipitation": "No Precipitation",
         "wind": "Calm",
@@ -113,15 +99,13 @@
     },
     {
         "temperature": "Mild",
-        "season": "Autumn",
         "humidity": "Moderate Humidity",
         "precipitation": "Sleet",
         "wind": "Gale",
-        "sky": "Foggy"
+        "sky": "Overcast"
     },
     {
         "temperature": "Mild",
-        "season": "All Seasons",
         "humidity": "Moderate Humidity",
         "precipitation": "Rain",
         "wind": "Breezy",
@@ -129,7 +113,6 @@
     },
     {
         "temperature": "Cool",
-        "season": "All Seasons",
         "humidity": "Dry",
         "precipitation": "No Precipitation",
         "wind": "Calm",
@@ -137,39 +120,34 @@
     },
     {
         "temperature": "Mild",
-        "season": "Indoor",
         "humidity": "Moderate Humidity",
         "precipitation": "No Precipitation",
         "wind": "No Wind",
-        "sky": "Indoor"
+        "sky": "Clear"
     },
     {
         "temperature": "Warm",
-        "season": "Indoor",
         "humidity": "Dry",
         "precipitation": "No Precipitation",
         "wind": "No Wind",
-        "sky": "Indoor"
+        "sky": "Clear"
     },
     {
         "temperature": "Cool",
-        "season": "Indoor",
         "humidity": "Moderate Humidity",
         "precipitation": "No Precipitation",
         "wind": "No Wind",
-        "sky": "Indoor"
+        "sky": "Clear"
     },
     {
         "temperature": "Freezing",
-        "season": "Winter",
         "humidity": "Dry",
         "precipitation": "Heavy Snow",
         "wind": "Gale",
-        "sky": "Foggy"
+        "sky": "Overcast"
     },
     {
         "temperature": "Hot",
-        "season": "Summer",
         "humidity": "Dry",
         "precipitation": "No Precipitation",
         "wind": "Calm",
@@ -177,7 +155,6 @@
     },
     {
         "temperature": "Cold",
-        "season": "Autumn",
         "humidity": "Humid",
         "precipitation": "Sleet",
         "wind": "Windy",
@@ -185,7 +162,6 @@
     },
     {
         "temperature": "Mild",
-        "season": "Spring",
         "humidity": "Moderate Humidity",
         "precipitation": "No Precipitation",
         "wind": "Calm",
@@ -193,7 +169,6 @@
     },
     {
         "temperature": "Warm",
-        "season": "Summer",
         "humidity": "Humid",
         "precipitation": "Drizzle",
         "wind": "Breezy",
@@ -201,7 +176,6 @@
     },
     {
         "temperature": "Cool",
-        "season": "Autumn",
         "humidity": "Dry",
         "precipitation": "No Precipitation",
         "wind": "Calm",
@@ -209,15 +183,13 @@
     },
     {
         "temperature": "Cool",
-        "season": "Spring",
         "humidity": "Humid",
         "precipitation": "Rain",
         "wind": "Windy",
-        "sky": "Foggy"
+        "sky": "Overcast"
     },
     {
         "temperature": "Warm",
-        "season": "Spring",
         "humidity": "Moderate Humidity",
         "precipitation": "No Precipitation",
         "wind": "Calm",
@@ -225,7 +197,6 @@
     },
     {
         "temperature": "Warm",
-        "season": "Summer",
         "humidity": "Dry",
         "precipitation": "No Precipitation",
         "wind": "Breezy",
@@ -233,7 +204,6 @@
     },
     {
         "temperature": "Warm",
-        "season": "All Seasons",
         "humidity": "Moderate Humidity",
         "precipitation": "No Precipitation",
         "wind": "Calm",
@@ -241,7 +211,6 @@
     },
     {
         "temperature": "Mild",
-        "season": "Autumn",
         "humidity": "Humid",
         "precipitation": "No Precipitation",
         "wind": "Breezy",
@@ -249,10 +218,9 @@
     },
     {
         "temperature": "Warm",
-        "season": "Indoor",
         "humidity": "Moderate Humidity",
         "precipitation": "No Precipitation",
         "wind": "No Wind",
-        "sky": "Indoor"
+        "sky": "Clear"
     }
 ]

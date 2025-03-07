@@ -1,29 +1,37 @@
 import fs from 'fs';
 import { getWeatherData } from './weather_puller.js';
 
-const cache = {};
-
 const cities = fs.readFileSync('data/list.txt', 'utf8').split('\n');
 
 const cityChunks = [];
-const chunkSize = 1000;
+const chunkSize = 100;
 
 for (let i = 0; i < cities.length; i += chunkSize) {
     cityChunks.push(cities.slice(i, i + chunkSize));
 }
 
-for (const chunk of cityChunks) {
-    const weatherDataPromises = chunk.map(city => getWeatherData(city));
-    const weatherDataArray = await Promise.all(weatherDataPromises);
+(async () => {
+    console.log('Caching weather data...');
+    console.log(`Total cities: ${cities.length}`);
+    console.log(`Total chunks: ${cityChunks.length}`);
+    console.log(`Chunk size: ${chunkSize}`);
+    for (let i = 0; i < cityChunks.length; i++) {
+        const chunk = cityChunks[i];
+        const weatherDataPromises = chunk.map(city => getWeatherData(city));
+        const weatherDataArray = await Promise.all(weatherDataPromises);
 
-    for (let i = 0; i < chunk.length; i++) {
-        if (weatherDataArray[i] === null) {
-            continue;
+        const cache = {};
+
+        for (let j = 0; j < chunk.length; j++) {
+            if (weatherDataArray[j] === null) {
+                continue;
+            }
+            cache[chunk[j]] = weatherDataArray[j];
         }
-        cache[chunk[i]] = weatherDataArray[i];
+
+        // Append the processed chunk to the file
+        fs.appendFileSync('data/weather.json', JSON.stringify(cache) + '\n');
+
+        console.log(`Processed ${(i + 1) * chunkSize} cities`);
     }
-
-    console.log(`Processed ${cityChunks.indexOf(chunk)} cities`);
-}
-
-fs.writeFileSync('data/weather.json', JSON.stringify(cache, null, 2));
+})();

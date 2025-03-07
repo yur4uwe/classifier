@@ -1,5 +1,10 @@
 import fs from 'fs';
+import readline from 'readline';
 import { getWeatherData } from './weather_puller.js';
+
+/**
+ * @typedef {Object[][]} dayConditions
+ */
 
 class WeatherMatcher {
     constructor() {
@@ -86,7 +91,7 @@ class WeatherMatcher {
     }
 
     // Determine precipitation type from numerical values
-    _getPrecipitationType(precipMm, snowCm, targetPrecip) {
+    _matchPrecipitationType(precipMm, snowCm, targetPrecip) {
         let precipType;
         if (snowCm > 0) {
             precipType = snowCm < 5 ? 'Snow' : 'Heavy Snow';
@@ -115,6 +120,20 @@ class WeatherMatcher {
         }
     }
 
+    _getPrecipitationFromValue(precipMm, snowCm) {
+        if (snowCm > 0) {
+            return snowCm < 5 ? 'Snow' : 'Heavy Snow';
+        } else if (precipMm === 0) {
+            return 'No Precipitation';
+        } else if (precipMm <= 2) {
+            return 'Drizzle';
+        } else if (precipMm <= 10) {
+            return 'Rain';
+        } else {
+            return precipMm < 50 ? 'Heavy Rain' : 'Thunderstorm';
+        }
+    }
+
     // Main matching function
     _matchConditions(numericalData, weatherDescriptor) {
         // Extract relevant fields ignoring season (index 1)
@@ -126,7 +145,6 @@ class WeatherMatcher {
             targetSky
         ] = weatherDescriptor;
 
-        // const matches = [];
         let matched = 0;
         let dayIsMatched = true;
 
@@ -144,7 +162,7 @@ class WeatherMatcher {
                 'humidity'
             );
 
-            const precipMatch = this._getPrecipitationType(
+            const precipMatch = this._matchPrecipitationType(
                 numericalData.precip_mm[hour],
                 numericalData.snow_cm[hour],
                 targetPrecip
@@ -163,18 +181,8 @@ class WeatherMatcher {
             );
 
             if (tempMatch && humidityMatch && precipMatch && windMatch && skyMatch) {
-                // matches.push({
-                //     hour,
-                //     is_day: numericalData.is_day[hour],
-                //     temp_c: numericalData.temp_c[hour],
-                //     humidity: numericalData.humidity[hour],
-                //     wind_kph: numericalData.wind_kph[hour],
-                //     precip_mm: numericalData.precip_mm[hour],
-                //     snow_cm: numericalData.snow_cm[hour],
-                //     cloud: numericalData.cloud[hour]
-                // });
                 matched++;
-            } else if (numericalData.is_day[hour] === 1) {
+            } else if (numericalData.is_day[hour]) {
                 dayIsMatched = false;
             }
         }
@@ -188,19 +196,18 @@ class WeatherMatcher {
 
             if (dayIsMatched && matched > 0) {
                 const descriptorString = descriptor.join(' | ');
-                // console.log(`Found matching day for city ${city}`);
-                // console.log(`  ${descriptorString}`);
-                // console.log(`  Matched ${matched} hours`);
-
                 matches[descriptorString].push(numericalData);
             }
-            // } else if (matched > 0) {
-            //     console.log(`Found ${matched} matching hours for city ${city}`);
-            // }
         }
     }
 
+    /**
+     * 
+     * @param {dayConditions} numericalData 
+     */
     matchConditionsOverWeather(numericalData) {
+        const dayDescriptors = []
+
         for (let hour = 0; hour < 24; hour++) {
             const tempDescriptor = this._getDescriptorFromValue(
                 numericalData.temp_c[hour],
@@ -210,7 +217,7 @@ class WeatherMatcher {
                 numericalData.humidity[hour],
                 'humidity'
             );
-            const precipType = this._getPrecipitationType(
+            const precipType = this._getPrecipitationFromValue(
                 numericalData.precip_mm[hour],
                 numericalData.snow_cm[hour]
             );
@@ -223,69 +230,30 @@ class WeatherMatcher {
                 'sky'
             );
 
-            console.log(`Hour ${hour}:`);
-            console.log(`  Temperature: ${tempDescriptor}`);
-            console.log(`  Humidity: ${humidityDescriptor}`);
-            console.log(`  Precipitation: ${precipType}`);
-            console.log(`  Wind: ${windDescriptor}`);
-            console.log(`  Sky: ${skyDescriptor}`);
-
+            dayDescriptors.push([tempDescriptor, humidityDescriptor, precipType, windDescriptor, skyDescriptor].join(' | '));
         }
+
+        const descriptorsFrequency = new Map();
+        let bestDescriptor = null;
+
+        for (let i = 0; i < dayDescriptors.length; i++) {
+            const descriptor = dayDescriptors[i];
+
+            if (descriptorsFrequency.has(descriptor)) {
+                descriptorsFrequency.set(descriptor, descriptorsFrequency.get(descriptor) + 1);
+
+                if (bestDescriptor === null || descriptorsFrequency.get(descriptor) > descriptorsFrequency.get(bestDescriptor)) {
+                    bestDescriptor = descriptor;
+                }
+            } else {
+                descriptorsFrequency.set(descriptor, 1);
+            }
+        }
+
+        return bestDescriptor;
     }
 }
-
-const descriptorsObj = JSON.parse(fs.readFileSync('data/possible_conditions.json'));
-const descriptors = [];
-
-for (const descriptor of descriptorsObj) {
-    const descArr = [];
-
-    for (const key of Object.keys(descriptor)) {
-        if (key === 'season') {
-            continue;
-        }
-        descArr.push(descriptor[key]);
-    }
-
-    descriptors.push(descArr);
-}
-
-const cities = fs.readFileSync('data/list.txt', 'utf8').split('\n');
-const weatherData = JSON.parse(fs.readFileSync('data/weather.json', 'utf8'));
-
-let citiesRead = 0;
-let citiesDropped = 0;
-const matching = Object.fromEntries(descriptors.map((descriptor) => [descriptor.join(" | "), []]));
 
 const matcher = new WeatherMatcher();
 
-// Example usage:
-(async () => {
-    console.log('Matching weather conditions...');
-    for (let i = 0; i < cities.length; i++) {
-        const city = cities[i];
-        const numericalData = weatherData[city];
-
-        if (!numericalData) {
-            // console.log(`No data for ${city}`);
-            continue;
-        }
-
-        matcher.matchWeatherOverAllConditions(matching, numericalData, descriptors, city);
-
-        // if (i % 1000 === 0) {
-        //     console.log(`Processed ${i} cities`);
-        //     for (const match of Object.keys(matching)) {
-        //         console.log(`${match}: ${matching[match].length}`);
-        //     }
-        // }
-    }
-
-    for (const match of Object.keys(matching)) {
-        console.log(`${match}: ${matching[match].length}`);
-    }
-
-    fs.writeFileSync('data/matching.json', JSON.stringify(matching, null, 2));
-
-    // matcher.matchConditionsOverWeather(numericalData);
-})();
+export { matcher };

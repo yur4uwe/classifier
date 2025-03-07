@@ -5,4 +5,5 @@ data/directories.json
 data/pending.json
 data/weather.json
 data/matching.json
+data/sample.json
 .env
