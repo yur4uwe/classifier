@@ -1,4 +1,6 @@
 import { matcher } from './weather_matcher.js';
+import { turnIntoMatrix } from './weather_puller.js';
+import readline from 'readline';
 import fs from 'fs';
 
 async function findWeatherDescriptors() {
@@ -25,7 +27,7 @@ async function findWeatherDescriptors() {
     console.log('Matching weather conditions...');
 
     const rl = readline.createInterface({
-        input: fs.createReadStream('data/weather.json'),
+        input: fs.createReadStream('data/weather.txt'),
         crlfDelay: Infinity
     });
 
@@ -113,6 +115,8 @@ async function matchConditions() {
             console.log(`  ${match}`);
         }
     }
+
+    fs.writeFileSync('data/close_enough.json', JSON.stringify(closeEnough, null, 2));
 }
 
 async function descriptorsCount() {
@@ -128,7 +132,7 @@ async function descriptorCreator() {
     const deducedConditions = {};
 
     const rl = readline.createInterface({
-        input: fs.createReadStream('data/weather.json'),
+        input: fs.createReadStream('data/weather.txt'),
         crlfDelay: Infinity
     });
 
@@ -163,4 +167,92 @@ async function descriptorCreator() {
     }
 }
 
-matchConditions();
+function rawData() {
+    const results = JSON.parse(fs.readFileSync('data/results.json'));
+    const tags = JSON.parse(fs.readFileSync('data/tags_mapping.json')).tags;
+    const types = JSON.parse(fs.readFileSync('data/types_mapping.json'));
+    const close_enough = JSON.parse(fs.readFileSync('data/close_enough.json'));
+    const matching = JSON.parse(fs.readFileSync('data/matching.json'));
+
+    for (const outfit of results) {
+        const outfitData = [];
+
+        const typesData = [];
+        for (const type of Object.values(outfit.types)) {
+            typesData.push(types[type]);
+        }
+        outfitData.push(typesData);
+
+        const tagsData = [];
+        for (const imageName in outfit.tags) {
+            const clothingTags = [];
+
+            for (const tag of outfit.tags[imageName]) {
+                clothingTags.push(tags[tag]);
+            }
+
+            tagsData.push(clothingTags);
+        }
+        outfitData.push(tagsData);
+
+        for (let descriptor of outfit.weatherConfig) {
+
+            /**
+             * @type {string[]}
+             */
+            const descArr = descriptor.split(" | ");
+
+            descriptor = [descArr[0], ...descArr.splice(2, descArr.length - 2)].join(" | ");
+
+            const acceptable_descriptors = [descriptor];
+
+            const closeDescriptors = close_enough[descriptor];
+
+            if (!closeDescriptors) {
+                continue;
+            }
+
+            closeDescriptors.forEach((closeDescriptor) => {
+                acceptable_descriptors.push(closeDescriptor);
+            });
+
+            const numericalData = acceptable_descriptors.map((descriptor) => {
+                return matching[descriptor];
+            });
+
+            const rawData = [];
+
+            for (const descriptorSuitableConditions of numericalData) {
+                if (!descriptorSuitableConditions) {
+                    continue;
+                }
+                for (const weatherConditions of descriptorSuitableConditions) {
+                    if (!weatherConditions) {
+                        continue;
+                    }
+                    rawData.push(turnIntoMatrix(weatherConditions));
+                }
+            }
+
+            const allConditionsForOneOutfit = [];
+
+            for (const condition of rawData) {
+                const sample = [...outfitData, condition];
+
+                // if (rawData.indexOf(condition) === 0) {
+                //     console.log(condition);
+                //     console.log(sample);
+                // }
+
+                allConditionsForOneOutfit.push(sample);
+            }
+
+            fs.writeFileSync("outfits/" + outfit.outfit + ".json", JSON.stringify(allConditionsForOneOutfit, null, 2));
+        }
+    }
+}
+
+findWeatherDescriptors();
+// matchConditions();
+
+// rawData();

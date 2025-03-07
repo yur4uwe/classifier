@@ -90,7 +90,7 @@ const getNextOutfit = async () => {
         typeSelect.id = 'type-select-' + image;
         typeSelect.classList.add('type-select');
 
-        for (const type of typesMapping) {
+        for (const type in typesMapping) {
             const option = document.createElement('option');
             option.value = type;
             option.innerText = type;

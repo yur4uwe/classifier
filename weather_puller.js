@@ -1,10 +1,26 @@
-// Weather forecast API URL
+
+/**
+ * @param {Array<{ 
+ *      temp_c: number, 
+ *      is_day: number, 
+ *      wind_kph: number, 
+ *      precip_mm: number, 
+ *      snow_cm: number, 
+ *      humidity: number, 
+ *      cloud: number, 
+ *      windchill_c: number, 
+ *      heatindex_c: number, 
+ *      will_it_rain: number, 
+ *      chance_of_rain: number, 
+ *      will_it_snow: number, 
+ *      chance_of_snow: number 
+ *  }[]>} data
+ * @returns {Array<number[]>}
+ */
 function turnIntoMatrix(data) {
     const matrix = [];
-    for (const key of Object.keys(data)) {
+    for (const key in data) {
         const value = data[key];
-        console.log(key);
-        console.log(value);
         matrix.push(value);
     }
     return matrix;
@@ -15,7 +31,7 @@ function turnIntoMatrix(data) {
  * @returns {Promise<Object | null>} Weather data for the given location or null if the location is invalid
  */
 async function getWeatherData(location) {
-    const weatherApi = `http://api.weatherapi.com/v1/forecast.json?key=cf0298ffa95d425e8a2155342253001&q=${location}&days=5&aqi=no&alerts=no`;
+    const weatherApi = `http://api.weatherapi.com/v1/forecast.json?key=cf0298ffa95d425e8a2155342253001&q=${location}&days=1&aqi=no&alerts=no`;
 
     const response = await fetch(weatherApi);
     const data = await response.json();
@@ -116,4 +132,4 @@ function weatherData(data) {
 
 // console.log("Weather:", weather);
 
-export { getWeatherData };
+export { getWeatherData, turnIntoMatrix };

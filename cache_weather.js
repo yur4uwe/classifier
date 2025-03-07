@@ -30,8 +30,11 @@ for (let i = 0; i < cities.length; i += chunkSize) {
         }
 
         // Append the processed chunk to the file
-        fs.appendFileSync('data/weather.json', JSON.stringify(cache) + '\n');
+        fs.appendFileSync('data/weather.txt', JSON.stringify(cache) + '\n');
 
-        console.log(`Processed ${(i + 1) * chunkSize} cities`);
+        if (i % (cityChunks.length / 50) === 0) {
+            console.log(`Processed ${(i + 1) * chunkSize} cities`);
+        }
+
     }
 })();

@@ -3,7 +3,8 @@ package-lock.json
 data/results.json
 data/directories.json
 data/pending.json
-data/weather.json
+data/weather.txt
 data/matching.json
 data/sample.json
+outfits/
 .env
