@@ -1,226 +1,34 @@
 [
-    {
-        "temperature": "Freezing",
-        "humidity": "Dry",
-        "precipitation": "Snow",
-        "wind": "Breezy",
-        "sky": "Overcast"
-    },
-    {
-        "temperature": "Cold",
-        "humidity": "Dry",
-        "precipitation": "Heavy Snow",
-        "wind": "Windy",
-        "sky": "Mostly Cloudy"
-    },
-    {
-        "temperature": "Freezing",
-        "humidity": "Moderate Humidity",
-        "precipitation": "Sleet",
-        "wind": "Gale",
-        "sky": "Overcast"
-    },
-    {
-        "temperature": "Cold",
-        "humidity": "Dry",
-        "precipitation": "No Precipitation",
-        "wind": "Calm",
-        "sky": "Clear"
-    },
-    {
-        "temperature": "Cool",
-        "humidity": "Moderate Humidity",
-        "precipitation": "Drizzle",
-        "wind": "Breezy",
-        "sky": "Mostly Cloudy"
-    },
-    {
-        "temperature": "Mild",
-        "humidity": "Humid",
-        "precipitation": "Rain",
-        "wind": "Windy",
-        "sky": "Overcast"
-    },
-    {
-        "temperature": "Cool",
-        "humidity": "Dry",
-        "precipitation": "No Precipitation",
-        "wind": "Calm",
-        "sky": "Partly Cloudy"
-    },
-    {
-        "temperature": "Warm",
-        "humidity": "Humid",
-        "precipitation": "Heavy Rain",
-        "wind": "Windy",
-        "sky": "Overcast"
-    },
-    {
-        "temperature": "Very Hot",
-        "humidity": "Dry",
-        "precipitation": "No Precipitation",
-        "wind": "Calm",
-        "sky": "Clear"
-    },
-    {
-        "temperature": "Warm",
-        "humidity": "Moderate Humidity",
-        "precipitation": "No Precipitation",
-        "wind": "Calm",
-        "sky": "Clear"
-    },
-    {
-        "temperature": "Hot",
-        "humidity": "Muggy",
-        "precipitation": "Drizzle",
-        "wind": "Breezy",
-        "sky": "Partly Cloudy"
-    },
-    {
-        "temperature": "Cool",
-        "humidity": "Moderate Humidity",
-        "precipitation": "Rain",
-        "wind": "Breezy",
-        "sky": "Overcast"
-    },
-    {
-        "temperature": "Mild",
-        "humidity": "Humid",
-        "precipitation": "Drizzle",
-        "wind": "Windy",
-        "sky": "Mostly Cloudy"
-    },
-    {
-        "temperature": "Cool",
-        "humidity": "Dry",
-        "precipitation": "No Precipitation",
-        "wind": "Calm",
-        "sky": "Clear"
-    },
-    {
-        "temperature": "Mild",
-        "humidity": "Moderate Humidity",
-        "precipitation": "Sleet",
-        "wind": "Gale",
-        "sky": "Overcast"
-    },
-    {
-        "temperature": "Mild",
-        "humidity": "Moderate Humidity",
-        "precipitation": "Rain",
-        "wind": "Breezy",
-        "sky": "Mostly Cloudy"
-    },
-    {
-        "temperature": "Cool",
-        "humidity": "Dry",
-        "precipitation": "No Precipitation",
-        "wind": "Calm",
-        "sky": "Clear"
-    },
-    {
-        "temperature": "Mild",
-        "humidity": "Moderate Humidity",
-        "precipitation": "No Precipitation",
-        "wind": "No Wind",
-        "sky": "Clear"
-    },
-    {
-        "temperature": "Warm",
-        "humidity": "Dry",
-        "precipitation": "No Precipitation",
-        "wind": "No Wind",
-        "sky": "Clear"
-    },
-    {
-        "temperature": "Cool",
-        "humidity": "Moderate Humidity",
-        "precipitation": "No Precipitation",
-        "wind": "No Wind",
-        "sky": "Clear"
-    },
-    {
-        "temperature": "Freezing",
-        "humidity": "Dry",
-        "precipitation": "Heavy Snow",
-        "wind": "Gale",
-        "sky": "Overcast"
-    },
-    {
-        "temperature": "Hot",
-        "humidity": "Dry",
-        "precipitation": "No Precipitation",
-        "wind": "Calm",
-        "sky": "Clear"
-    },
-    {
-        "temperature": "Cold",
-        "humidity": "Humid",
-        "precipitation": "Sleet",
-        "wind": "Windy",
-        "sky": "Overcast"
-    },
-    {
-        "temperature": "Mild",
-        "humidity": "Moderate Humidity",
-        "precipitation": "No Precipitation",
-        "wind": "Calm",
-        "sky": "Partly Cloudy"
-    },
-    {
-        "temperature": "Warm",
-        "humidity": "Humid",
-        "precipitation": "Drizzle",
-        "wind": "Breezy",
-        "sky": "Mostly Cloudy"
-    },
-    {
-        "temperature": "Cool",
-        "humidity": "Dry",
-        "precipitation": "No Precipitation",
-        "wind": "Calm",
-        "sky": "Clear"
-    },
-    {
-        "temperature": "Cool",
-        "humidity": "Humid",
-        "precipitation": "Rain",
-        "wind": "Windy",
-        "sky": "Overcast"
-    },
-    {
-        "temperature": "Warm",
-        "humidity": "Moderate Humidity",
-        "precipitation": "No Precipitation",
-        "wind": "Calm",
-        "sky": "Clear"
-    },
-    {
-        "temperature": "Warm",
-        "humidity": "Dry",
-        "precipitation": "No Precipitation",
-        "wind": "Breezy",
-        "sky": "Partly Cloudy"
-    },
-    {
-        "temperature": "Warm",
-        "humidity": "Moderate Humidity",
-        "precipitation": "No Precipitation",
-        "wind": "Calm",
-        "sky": "Clear"
-    },
-    {
-        "temperature": "Mild",
-        "humidity": "Humid",
-        "precipitation": "No Precipitation",
-        "wind": "Breezy",
-        "sky": "Mostly Cloudy"
-    },
-    {
-        "temperature": "Warm",
-        "humidity": "Moderate Humidity",
-        "precipitation": "No Precipitation",
-        "wind": "No Wind",
-        "sky": "Clear"
-    }
+    "Freezing | Dry | Snow | Breezy | Overcast",
+    "Cold | Dry | Heavy Snow | Windy | Mostly Cloudy",
+    "Freezing | Moderate Humidity | Sleet | Gale | Overcast",
+    "Cold | Dry | No Precipitation | Calm | Clear",
+    "Cool | Moderate Humidity | Drizzle | Breezy | Mostly Cloudy",
+    "Mild | Humid | Rain | Windy | Overcast",
+    "Cool | Dry | No Precipitation | Calm | Partly Cloudy",
+    "Warm | Humid | Heavy Rain | Windy | Overcast",
+    "Very Hot | Dry | No Precipitation | Calm | Clear",
+    "Warm | Moderate Humidity | No Precipitation | Calm | Clear",
+    "Hot | Muggy | Drizzle | Breezy | Partly Cloudy",
+    "Cool | Moderate Humidity | Rain | Breezy | Overcast",
+    "Mild | Humid | Drizzle | Windy | Mostly Cloudy",
+    "Cool | Dry | No Precipitation | Calm | Clear",
+    "Mild | Moderate Humidity | Sleet | Gale | Overcast",
+    "Mild | Moderate Humidity | Rain | Breezy | Mostly Cloudy",
+    "Cool | Dry | No Precipitation | Calm | Clear",
+    "Mild | Moderate Humidity | No Precipitation | No Wind | Clear",
+    "Warm | Dry | No Precipitation | No Wind | Clear",
+    "Cool | Moderate Humidity | No Precipitation | No Wind | Clear",
+    "Freezing | Dry | Heavy Snow | Gale | Overcast",
+    "Hot | Dry | No Precipitation | Calm | Clear",
+    "Cold | Humid | Sleet | Windy | Overcast",
+    "Mild | Moderate Humidity | No Precipitation | Calm | Partly Cloudy",
+    "Warm | Humid | Drizzle | Breezy | Mostly Cloudy",
+    "Cool | Dry | No Precipitation | Calm | Clear",
+    "Cool | Humid | Rain | Windy | Overcast",
+    "Warm | Moderate Humidity | No Precipitation | Calm | Clear",
+    "Warm | Dry | No Precipitation | Breezy | Partly Cloudy",
+    "Warm | Moderate Humidity | No Precipitation | Calm | Clear",
+    "Mild | Humid | No Precipitation | Breezy | Mostly Cloudy",
+    "Warm | Moderate Humidity | No Precipitation | No Wind | Clear"
 ]

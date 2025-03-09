@@ -1,246 +1,198 @@
 {
-  "Freezing | Dry | Snow | Breezy | Overcast": [
-    "Freezing | Muggy | Snow | Breezy | Overcast",
-    "Freezing | Humid | Snow | Breezy | Overcast"
-  ],
-  "Cold | Dry | Heavy Snow | Windy | Mostly Cloudy": [
-    "Cold | Dry | No Precipitation | Windy | Mostly Cloudy"
-  ],
-  "Freezing | Moderate Humidity | Sleet | Gale | Overcast": [],
-  "Cold | Dry | No Precipitation | Calm | Clear": [
-    "Cold | Muggy | No Precipitation | Calm | Clear",
-    "Cold | Humid | No Precipitation | Calm | Clear",
-    "Cold | Moderate Humidity | No Precipitation | Calm | Clear",
-    "Mild | Dry | No Precipitation | Calm | Clear",
-    "Cold | Dry | No Precipitation | Breezy | Clear",
-    "Very Hot | Dry | No Precipitation | Calm | Clear",
-    "Cold | Dry | No Precipitation | Calm | Overcast",
-    "Hot | Dry | No Precipitation | Calm | Clear",
-    "Warm | Dry | No Precipitation | Calm | Clear",
-    "Cool | Dry | No Precipitation | Calm | Clear",
-    "Cold | Dry | No Precipitation | Calm | Clear",
-    "Cold | Dry | No Precipitation | Windy | Clear",
-    "Cold | Dry | No Precipitation | Gale | Clear",
-    "Cold | Dry | No Precipitation | Calm | Partly Cloudy",
-    "Cold | Dry | No Precipitation | Calm | Mostly Cloudy",
-    "Freezing | Dry | No Precipitation | Calm | Clear"
-  ],
-  "Cool | Moderate Humidity | Drizzle | Breezy | Mostly Cloudy": [
-    "Cool | Moderate Humidity | Drizzle | Breezy | Overcast",
-    "Cool | Moderate Humidity | No Precipitation | Breezy | Mostly Cloudy",
-    "Cool | Muggy | Drizzle | Breezy | Mostly Cloudy",
-    "Cool | Moderate Humidity | Drizzle | Calm | Mostly Cloudy",
-    "Cool | Humid | Drizzle | Breezy | Mostly Cloudy"
-  ],
-  "Mild | Humid | Rain | Windy | Overcast": [
-    "Mild | Humid | Drizzle | Windy | Overcast",
-    "Mild | Humid | No Precipitation | Windy | Overcast"
-  ],
-  "Cool | Dry | No Precipitation | Calm | Partly Cloudy": [
-    "Very Hot | Dry | No Precipitation | Calm | Partly Cloudy",
-    "Cool | Dry | No Precipitation | Calm | Partly Cloudy",
-    "Cool | Muggy | No Precipitation | Calm | Partly Cloudy",
-    "Cool | Dry | No Precipitation | Calm | Clear",
-    "Cool | Humid | No Precipitation | Calm | Partly Cloudy",
-    "Cool | Dry | No Precipitation | Calm | Mostly Cloudy",
-    "Cool | Dry | No Precipitation | Calm | Overcast",
-    "Mild | Dry | No Precipitation | Calm | Partly Cloudy",
-    "Cool | Moderate Humidity | No Precipitation | Calm | Partly Cloudy",
-    "Cold | Dry | No Precipitation | Calm | Partly Cloudy",
-    "Hot | Dry | No Precipitation | Calm | Partly Cloudy",
-    "Cool | Dry | No Precipitation | Breezy | Partly Cloudy",
-    "Warm | Dry | No Precipitation | Calm | Partly Cloudy"
-  ],
-  "Warm | Humid | Heavy Rain | Windy | Overcast": [
-    "Warm | Humid | Drizzle | Windy | Overcast",
-    "Warm | Humid | No Precipitation | Windy | Overcast"
-  ],
-  "Very Hot | Dry | No Precipitation | Calm | Clear": [
-    "Very Hot | Dry | No Precipitation | Windy | Clear",
-    "Very Hot | Dry | No Precipitation | Calm | Partly Cloudy",
-    "Mild | Dry | No Precipitation | Calm | Clear",
-    "Very Hot | Dry | No Precipitation | Calm | Clear",
-    "Hot | Dry | No Precipitation | Calm | Clear",
-    "Warm | Dry | No Precipitation | Calm | Clear",
-    "Very Hot | Dry | No Precipitation | Breezy | Clear",
-    "Cool | Dry | No Precipitation | Calm | Clear",
-    "Cold | Dry | No Precipitation | Calm | Clear",
-    "Very Hot | Dry | No Precipitation | Calm | Mostly Cloudy",
-    "Freezing | Dry | No Precipitation | Calm | Clear",
-    "Very Hot | Dry | No Precipitation | Gale | Clear",
-    "Very Hot | Moderate Humidity | No Precipitation | Calm | Clear",
-    "Very Hot | Dry | No Precipitation | Calm | Overcast"
-  ],
-  "Warm | Moderate Humidity | No Precipitation | Calm | Clear": [
-    "Cool | Moderate Humidity | No Precipitation | Calm | Clear",
-    "Cold | Moderate Humidity | No Precipitation | Calm | Clear",
-    "Warm | Muggy | No Precipitation | Calm | Clear",
-    "Mild | Moderate Humidity | No Precipitation | Calm | Clear",
-    "Hot | Moderate Humidity | No Precipitation | Calm | Clear",
-    "Warm | Dry | No Precipitation | Calm | Clear",
-    "Freezing | Moderate Humidity | No Precipitation | Calm | Clear",
-    "Warm | Moderate Humidity | No Precipitation | Calm | Clear",
-    "Warm | Moderate Humidity | No Precipitation | Breezy | Clear",
-    "Warm | Humid | No Precipitation | Calm | Clear",
-    "Warm | Moderate Humidity | No Precipitation | Windy | Clear",
-    "Warm | Moderate Humidity | No Precipitation | Calm | Partly Cloudy",
-    "Warm | Moderate Humidity | No Precipitation | Calm | Mostly Cloudy",
-    "Warm | Moderate Humidity | No Precipitation | Gale | Clear",
-    "Very Hot | Moderate Humidity | No Precipitation | Calm | Clear"
-  ],
-  "Hot | Muggy | Drizzle | Breezy | Partly Cloudy": [
-    "Hot | Muggy | No Precipitation | Breezy | Partly Cloudy",
-    "Hot | Muggy | Drizzle | Breezy | Overcast",
-    "Hot | Muggy | Drizzle | Breezy | Mostly Cloudy"
-  ],
-  "Cool | Moderate Humidity | Rain | Breezy | Overcast": [
-    "Cool | Moderate Humidity | Drizzle | Breezy | Overcast",
-    "Cool | Moderate Humidity | No Precipitation | Breezy | Overcast",
-    "Cool | Muggy | Rain | Breezy | Overcast"
-  ],
-  "Mild | Humid | Drizzle | Windy | Mostly Cloudy": [
-    "Mild | Humid | Drizzle | Windy | Overcast",
-    "Mild | Humid | Drizzle | Breezy | Mostly Cloudy",
-    "Cold | Humid | Drizzle | Windy | Mostly Cloudy",
-    "Mild | Moderate Humidity | Drizzle | Windy | Mostly Cloudy",
-    "Mild | Humid | No Precipitation | Windy | Mostly Cloudy",
-    "Cool | Humid | Drizzle | Windy | Mostly Cloudy"
-  ],
-  "Cool | Dry | No Precipitation | Calm | Clear": [
-    "Cool | Moderate Humidity | No Precipitation | Calm | Clear",
-    "Mild | Dry | No Precipitation | Calm | Clear",
-    "Very Hot | Dry | No Precipitation | Calm | Clear",
-    "Cool | Dry | No Precipitation | Calm | Partly Cloudy",
-    "Hot | Dry | No Precipitation | Calm | Clear",
-    "Warm | Dry | No Precipitation | Calm | Clear",
-    "Cool | Dry | No Precipitation | Calm | Clear",
-    "Cool | Muggy | No Precipitation | Calm | Clear",
-    "Cool | Humid | No Precipitation | Calm | Clear",
-    "Cool | Dry | No Precipitation | Calm | Mostly Cloudy",
-    "Cold | Dry | No Precipitation | Calm | Clear",
-    "Cool | Dry | No Precipitation | Calm | Overcast",
-    "Cool | Dry | No Precipitation | Breezy | Clear",
-    "Cool | Dry | No Precipitation | Windy | Clear",
-    "Freezing | Dry | No Precipitation | Calm | Clear",
-    "Cool | Dry | No Precipitation | Gale | Clear"
-  ],
-  "Mild | Moderate Humidity | Sleet | Gale | Overcast": [
-    "Mild | Moderate Humidity | No Precipitation | Gale | Overcast"
-  ],
-  "Mild | Moderate Humidity | Rain | Breezy | Mostly Cloudy": [
-    "Mild | Moderate Humidity | No Precipitation | Breezy | Mostly Cloudy"
-  ],
-  "Mild | Moderate Humidity | No Precipitation | No Wind | Clear": [
-    "Mild | Moderate Humidity | No Precipitation | Windy | Clear",
-    "Mild | Moderate Humidity | No Precipitation | Calm | Clear",
-    "Mild | Moderate Humidity | No Precipitation | Breezy | Clear",
-    "Mild | Moderate Humidity | No Precipitation | Gale | Clear"
-  ],
-  "Warm | Dry | No Precipitation | No Wind | Clear": [
-    "Warm | Dry | No Precipitation | Windy | Clear",
-    "Warm | Dry | No Precipitation | Calm | Clear",
-    "Warm | Dry | No Precipitation | Breezy | Clear",
-    "Warm | Dry | No Precipitation | Gale | Clear"
-  ],
-  "Cool | Moderate Humidity | No Precipitation | No Wind | Clear": [
-    "Cool | Moderate Humidity | No Precipitation | Calm | Clear",
-    "Cool | Moderate Humidity | No Precipitation | Gale | Clear",
-    "Cool | Moderate Humidity | No Precipitation | Breezy | Clear",
-    "Cool | Moderate Humidity | No Precipitation | Windy | Clear"
-  ],
-  "Freezing | Dry | Heavy Snow | Gale | Overcast": [
-    "Freezing | Dry | Drizzle | Gale | Overcast"
-  ],
-  "Hot | Dry | No Precipitation | Calm | Clear": [
-    "Mild | Dry | No Precipitation | Calm | Clear",
-    "Hot | Humid | No Precipitation | Calm | Clear",
-    "Very Hot | Dry | No Precipitation | Calm | Clear",
-    "Hot | Dry | No Precipitation | Calm | Clear",
-    "Hot | Moderate Humidity | No Precipitation | Calm | Clear",
-    "Warm | Dry | No Precipitation | Calm | Clear",
-    "Cool | Dry | No Precipitation | Calm | Clear",
-    "Hot | Dry | No Precipitation | Breezy | Clear",
-    "Cold | Dry | No Precipitation | Calm | Clear",
-    "Hot | Dry | No Precipitation | Windy | Clear",
-    "Hot | Muggy | No Precipitation | Calm | Clear",
-    "Hot | Dry | No Precipitation | Gale | Clear",
-    "Hot | Dry | No Precipitation | Calm | Partly Cloudy",
-    "Freezing | Dry | No Precipitation | Calm | Clear",
-    "Hot | Dry | No Precipitation | Calm | Mostly Cloudy"
-  ],
-  "Cold | Humid | Sleet | Windy | Overcast": [
-    "Cold | Humid | No Precipitation | Windy | Overcast",
-    "Cold | Humid | Drizzle | Windy | Overcast",
-    "Cold | Humid | Snow | Windy | Overcast"
-  ],
-  "Mild | Moderate Humidity | No Precipitation | Calm | Partly Cloudy": [
-    "Mild | Moderate Humidity | No Precipitation | Breezy | Partly Cloudy",
-    "Mild | Muggy | No Precipitation | Calm | Partly Cloudy",
-    "Mild | Moderate Humidity | No Precipitation | Calm | Clear",
-    "Cold | Moderate Humidity | No Precipitation | Calm | Partly Cloudy",
-    "Mild | Moderate Humidity | No Precipitation | Calm | Mostly Cloudy",
-    "Mild | Moderate Humidity | No Precipitation | Calm | Partly Cloudy",
-    "Mild | Dry | No Precipitation | Calm | Partly Cloudy",
-    "Cool | Moderate Humidity | No Precipitation | Calm | Partly Cloudy",
-    "Freezing | Moderate Humidity | No Precipitation | Calm | Partly Cloudy",
-    "Warm | Moderate Humidity | No Precipitation | Calm | Partly Cloudy",
-    "Hot | Moderate Humidity | No Precipitation | Calm | Partly Cloudy",
-    "Mild | Moderate Humidity | No Precipitation | Windy | Partly Cloudy",
-    "Mild | Humid | No Precipitation | Calm | Partly Cloudy",
-    "Very Hot | Moderate Humidity | No Precipitation | Calm | Partly Cloudy",
-    "Mild | Moderate Humidity | No Precipitation | Calm | Overcast"
-  ],
-  "Warm | Humid | Drizzle | Breezy | Mostly Cloudy": [
-    "Warm | Muggy | Drizzle | Breezy | Mostly Cloudy",
-    "Warm | Humid | Drizzle | Breezy | Overcast",
-    "Mild | Humid | Drizzle | Breezy | Mostly Cloudy",
-    "Hot | Humid | Drizzle | Breezy | Mostly Cloudy",
-    "Warm | Humid | No Precipitation | Breezy | Mostly Cloudy",
-    "Cool | Humid | Drizzle | Breezy | Mostly Cloudy",
-    "Cold | Humid | Drizzle | Breezy | Mostly Cloudy"
-  ],
-  "Cool | Humid | Rain | Windy | Overcast": [
-    "Cool | Humid | No Precipitation | Windy | Overcast",
-    "Cool | Humid | Drizzle | Windy | Overcast"
-  ],
-  "Warm | Dry | No Precipitation | Breezy | Partly Cloudy": [
-    "Warm | Dry | No Precipitation | Breezy | Clear",
-    "Warm | Muggy | No Precipitation | Breezy | Partly Cloudy",
-    "Warm | Dry | No Precipitation | Breezy | Partly Cloudy",
-    "Very Hot | Dry | No Precipitation | Breezy | Partly Cloudy",
-    "Mild | Dry | No Precipitation | Breezy | Partly Cloudy",
-    "Hot | Dry | No Precipitation | Breezy | Partly Cloudy",
-    "Warm | Humid | No Precipitation | Breezy | Partly Cloudy",
-    "Cold | Dry | No Precipitation | Breezy | Partly Cloudy",
-    "Cool | Dry | No Precipitation | Breezy | Partly Cloudy",
-    "Warm | Dry | No Precipitation | Breezy | Mostly Cloudy",
-    "Warm | Moderate Humidity | No Precipitation | Breezy | Partly Cloudy",
-    "Warm | Dry | No Precipitation | Calm | Partly Cloudy",
-    "Warm | Dry | No Precipitation | Breezy | Overcast",
-    "Freezing | Dry | No Precipitation | Breezy | Partly Cloudy"
-  ],
-  "Mild | Humid | No Precipitation | Breezy | Mostly Cloudy": [
-    "Mild | Humid | No Precipitation | Breezy | Clear",
-    "Hot | Humid | No Precipitation | Breezy | Mostly Cloudy",
-    "Mild | Muggy | No Precipitation | Breezy | Mostly Cloudy",
-    "Cool | Humid | No Precipitation | Breezy | Mostly Cloudy",
-    "Mild | Humid | No Precipitation | Breezy | Partly Cloudy",
-    "Mild | Moderate Humidity | No Precipitation | Breezy | Mostly Cloudy",
-    "Mild | Humid | Drizzle | Breezy | Mostly Cloudy",
-    "Freezing | Humid | No Precipitation | Breezy | Mostly Cloudy",
-    "Mild | Humid | No Precipitation | Breezy | Mostly Cloudy",
-    "Mild | Humid | No Precipitation | Calm | Mostly Cloudy",
-    "Warm | Humid | No Precipitation | Breezy | Mostly Cloudy",
-    "Cold | Humid | No Precipitation | Breezy | Mostly Cloudy",
-    "Mild | Humid | No Precipitation | Gale | Mostly Cloudy",
-    "Mild | Humid | No Precipitation | Breezy | Overcast",
-    "Mild | Humid | No Precipitation | Windy | Mostly Cloudy",
-    "Mild | Dry | No Precipitation | Breezy | Mostly Cloudy"
-  ],
-  "Warm | Moderate Humidity | No Precipitation | No Wind | Clear": [
-    "Warm | Moderate Humidity | No Precipitation | Calm | Clear",
-    "Warm | Moderate Humidity | No Precipitation | Breezy | Clear",
-    "Warm | Moderate Humidity | No Precipitation | Windy | Clear",
-    "Warm | Moderate Humidity | No Precipitation | Gale | Clear"
-  ]
+    "Freezing | Dry | Snow | Breezy | Overcast": [
+        "Freezing | Muggy | Snow | Breezy | Overcast",
+        "Freezing | Humid | Snow | Breezy | Overcast"
+    ],
+    "Cold | Dry | Heavy Snow | Windy | Mostly Cloudy": [
+        "Cold | Dry | No Precipitation | Windy | Mostly Cloudy"
+    ],
+    "Freezing | Moderate Humidity | Sleet | Gale | Overcast": [],
+    "Cold | Dry | No Precipitation | Calm | Clear": [
+        "Cold | Muggy | No Precipitation | Calm | Clear",
+        "Cold | Humid | No Precipitation | Calm | Clear",
+        "Cold | Moderate Humidity | No Precipitation | Calm | Clear",
+        "Cold | Dry | No Precipitation | Breezy | Clear",
+        "Cold | Dry | No Precipitation | Calm | Overcast",
+        "Cool | Dry | No Precipitation | Calm | Clear",
+        "Cold | Dry | No Precipitation | Windy | Clear",
+        "Cold | Dry | No Precipitation | Gale | Clear",
+        "Cold | Dry | No Precipitation | Calm | Partly Cloudy",
+        "Cold | Dry | No Precipitation | Calm | Mostly Cloudy",
+        "Freezing | Dry | No Precipitation | Calm | Clear"
+    ],
+    "Cool | Moderate Humidity | Drizzle | Breezy | Mostly Cloudy": [
+        "Cool | Moderate Humidity | Drizzle | Breezy | Overcast",
+        "Cool | Moderate Humidity | No Precipitation | Breezy | Mostly Cloudy",
+        "Cool | Muggy | Drizzle | Breezy | Mostly Cloudy",
+        "Cool | Moderate Humidity | Drizzle | Calm | Mostly Cloudy",
+        "Cool | Humid | Drizzle | Breezy | Mostly Cloudy"
+    ],
+    "Mild | Humid | Rain | Windy | Overcast": [
+        "Mild | Humid | Drizzle | Windy | Overcast",
+        "Mild | Humid | No Precipitation | Windy | Overcast"
+    ],
+    "Cool | Dry | No Precipitation | Calm | Partly Cloudy": [
+        "Cool | Muggy | No Precipitation | Calm | Partly Cloudy",
+        "Cool | Dry | No Precipitation | Calm | Clear",
+        "Cool | Humid | No Precipitation | Calm | Partly Cloudy",
+        "Cool | Dry | No Precipitation | Calm | Mostly Cloudy",
+        "Cool | Dry | No Precipitation | Calm | Overcast",
+        "Mild | Dry | No Precipitation | Calm | Partly Cloudy",
+        "Cool | Moderate Humidity | No Precipitation | Calm | Partly Cloudy",
+        "Cold | Dry | No Precipitation | Calm | Partly Cloudy",
+        "Cool | Dry | No Precipitation | Breezy | Partly Cloudy"
+    ],
+    "Warm | Humid | Heavy Rain | Windy | Overcast": [
+        "Warm | Humid | Drizzle | Windy | Overcast",
+        "Warm | Humid | No Precipitation | Windy | Overcast"
+    ],
+    "Very Hot | Dry | No Precipitation | Calm | Clear": [
+        "Very Hot | Dry | No Precipitation | Windy | Clear",
+        "Very Hot | Dry | No Precipitation | Calm | Partly Cloudy",
+        "Hot | Dry | No Precipitation | Calm | Clear",
+        "Very Hot | Dry | No Precipitation | Breezy | Clear",
+        "Very Hot | Dry | No Precipitation | Calm | Mostly Cloudy",
+        "Very Hot | Dry | No Precipitation | Gale | Clear",
+        "Very Hot | Moderate Humidity | No Precipitation | Calm | Clear",
+        "Very Hot | Dry | No Precipitation | Calm | Overcast"
+    ],
+    "Warm | Moderate Humidity | No Precipitation | Calm | Clear": [
+        "Warm | Muggy | No Precipitation | Calm | Clear",
+        "Mild | Moderate Humidity | No Precipitation | Calm | Clear",
+        "Hot | Moderate Humidity | No Precipitation | Calm | Clear",
+        "Warm | Dry | No Precipitation | Calm | Clear",
+        "Warm | Moderate Humidity | No Precipitation | Breezy | Clear",
+        "Warm | Humid | No Precipitation | Calm | Clear",
+        "Warm | Moderate Humidity | No Precipitation | Windy | Clear",
+        "Warm | Moderate Humidity | No Precipitation | Calm | Partly Cloudy",
+        "Warm | Moderate Humidity | No Precipitation | Calm | Mostly Cloudy",
+        "Warm | Moderate Humidity | No Precipitation | Gale | Clear"
+    ],
+    "Hot | Muggy | Drizzle | Breezy | Partly Cloudy": [
+        "Hot | Muggy | No Precipitation | Breezy | Partly Cloudy",
+        "Hot | Muggy | Drizzle | Breezy | Overcast",
+        "Hot | Muggy | Drizzle | Breezy | Mostly Cloudy"
+    ],
+    "Cool | Moderate Humidity | Rain | Breezy | Overcast": [
+        "Cool | Moderate Humidity | Drizzle | Breezy | Overcast",
+        "Cool | Moderate Humidity | No Precipitation | Breezy | Overcast",
+        "Cool | Muggy | Rain | Breezy | Overcast"
+    ],
+    "Mild | Humid | Drizzle | Windy | Mostly Cloudy": [
+        "Mild | Humid | Drizzle | Windy | Overcast",
+        "Mild | Humid | Drizzle | Breezy | Mostly Cloudy",
+        "Mild | Moderate Humidity | Drizzle | Windy | Mostly Cloudy",
+        "Mild | Humid | No Precipitation | Windy | Mostly Cloudy",
+        "Cool | Humid | Drizzle | Windy | Mostly Cloudy"
+    ],
+    "Cool | Dry | No Precipitation | Calm | Clear": [
+        "Cool | Moderate Humidity | No Precipitation | Calm | Clear",
+        "Mild | Dry | No Precipitation | Calm | Clear",
+        "Cool | Dry | No Precipitation | Calm | Partly Cloudy",
+        "Cool | Muggy | No Precipitation | Calm | Clear",
+        "Cool | Humid | No Precipitation | Calm | Clear",
+        "Cool | Dry | No Precipitation | Calm | Mostly Cloudy",
+        "Cold | Dry | No Precipitation | Calm | Clear",
+        "Cool | Dry | No Precipitation | Calm | Overcast",
+        "Cool | Dry | No Precipitation | Breezy | Clear",
+        "Cool | Dry | No Precipitation | Windy | Clear",
+        "Cool | Dry | No Precipitation | Gale | Clear"
+    ],
+    "Mild | Moderate Humidity | Sleet | Gale | Overcast": [
+        "Mild | Moderate Humidity | No Precipitation | Gale | Overcast"
+    ],
+    "Mild | Moderate Humidity | Rain | Breezy | Mostly Cloudy": [
+        "Mild | Moderate Humidity | No Precipitation | Breezy | Mostly Cloudy"
+    ],
+    "Mild | Moderate Humidity | No Precipitation | No Wind | Clear": [
+        "Mild | Moderate Humidity | No Precipitation | Windy | Clear",
+        "Mild | Moderate Humidity | No Precipitation | Calm | Clear",
+        "Mild | Moderate Humidity | No Precipitation | Breezy | Clear",
+        "Mild | Moderate Humidity | No Precipitation | Gale | Clear"
+    ],
+    "Warm | Dry | No Precipitation | No Wind | Clear": [
+        "Warm | Dry | No Precipitation | Windy | Clear",
+        "Warm | Dry | No Precipitation | Calm | Clear",
+        "Warm | Dry | No Precipitation | Breezy | Clear",
+        "Warm | Dry | No Precipitation | Gale | Clear"
+    ],
+    "Cool | Moderate Humidity | No Precipitation | No Wind | Clear": [
+        "Cool | Moderate Humidity | No Precipitation | Calm | Clear",
+        "Cool | Moderate Humidity | No Precipitation | Gale | Clear",
+        "Cool | Moderate Humidity | No Precipitation | Breezy | Clear",
+        "Cool | Moderate Humidity | No Precipitation | Windy | Clear"
+    ],
+    "Freezing | Dry | Heavy Snow | Gale | Overcast": [
+        "Freezing | Dry | Drizzle | Gale | Overcast"
+    ],
+    "Hot | Dry | No Precipitation | Calm | Clear": [
+        "Hot | Humid | No Precipitation | Calm | Clear",
+        "Very Hot | Dry | No Precipitation | Calm | Clear",
+        "Hot | Moderate Humidity | No Precipitation | Calm | Clear",
+        "Warm | Dry | No Precipitation | Calm | Clear",
+        "Hot | Dry | No Precipitation | Breezy | Clear",
+        "Hot | Dry | No Precipitation | Windy | Clear",
+        "Hot | Muggy | No Precipitation | Calm | Clear",
+        "Hot | Dry | No Precipitation | Gale | Clear",
+        "Hot | Dry | No Precipitation | Calm | Partly Cloudy",
+        "Hot | Dry | No Precipitation | Calm | Mostly Cloudy"
+    ],
+    "Cold | Humid | Sleet | Windy | Overcast": [
+        "Cold | Humid | No Precipitation | Windy | Overcast",
+        "Cold | Humid | Drizzle | Windy | Overcast",
+        "Cold | Humid | Snow | Windy | Overcast"
+    ],
+    "Mild | Moderate Humidity | No Precipitation | Calm | Partly Cloudy": [
+        "Mild | Moderate Humidity | No Precipitation | Breezy | Partly Cloudy",
+        "Mild | Muggy | No Precipitation | Calm | Partly Cloudy",
+        "Mild | Moderate Humidity | No Precipitation | Calm | Clear",
+        "Mild | Moderate Humidity | No Precipitation | Calm | Mostly Cloudy",
+        "Mild | Dry | No Precipitation | Calm | Partly Cloudy",
+        "Warm | Moderate Humidity | No Precipitation | Calm | Partly Cloudy",
+        "Mild | Moderate Humidity | No Precipitation | Windy | Partly Cloudy",
+        "Mild | Humid | No Precipitation | Calm | Partly Cloudy",
+        "Mild | Moderate Humidity | No Precipitation | Calm | Overcast"
+    ],
+    "Warm | Humid | Drizzle | Breezy | Mostly Cloudy": [
+        "Warm | Muggy | Drizzle | Breezy | Mostly Cloudy",
+        "Warm | Humid | Drizzle | Breezy | Overcast",
+        "Mild | Humid | Drizzle | Breezy | Mostly Cloudy",
+        "Hot | Humid | Drizzle | Breezy | Mostly Cloudy",
+        "Warm | Humid | No Precipitation | Breezy | Mostly Cloudy"
+    ],
+    "Cool | Humid | Rain | Windy | Overcast": [
+        "Cool | Humid | No Precipitation | Windy | Overcast",
+        "Cool | Humid | Drizzle | Windy | Overcast"
+    ],
+    "Warm | Dry | No Precipitation | Breezy | Partly Cloudy": [
+        "Warm | Dry | No Precipitation | Breezy | Clear",
+        "Warm | Muggy | No Precipitation | Breezy | Partly Cloudy",
+        "Mild | Dry | No Precipitation | Breezy | Partly Cloudy",
+        "Hot | Dry | No Precipitation | Breezy | Partly Cloudy",
+        "Warm | Humid | No Precipitation | Breezy | Partly Cloudy",
+        "Warm | Dry | No Precipitation | Breezy | Mostly Cloudy",
+        "Warm | Moderate Humidity | No Precipitation | Breezy | Partly Cloudy",
+        "Warm | Dry | No Precipitation | Calm | Partly Cloudy",
+        "Warm | Dry | No Precipitation | Breezy | Overcast"
+    ],
+    "Mild | Humid | No Precipitation | Breezy | Mostly Cloudy": [
+        "Mild | Humid | No Precipitation | Breezy | Clear",
+        "Hot | Humid | No Precipitation | Breezy | Mostly Cloudy",
+        "Mild | Muggy | No Precipitation | Breezy | Mostly Cloudy",
+        "Mild | Humid | No Precipitation | Breezy | Partly Cloudy",
+        "Mild | Moderate Humidity | No Precipitation | Breezy | Mostly Cloudy",
+        "Mild | Humid | Drizzle | Breezy | Mostly Cloudy",
+        "Mild | Humid | No Precipitation | Calm | Mostly Cloudy",
+        "Warm | Humid | No Precipitation | Breezy | Mostly Cloudy",
+        "Mild | Humid | No Precipitation | Gale | Mostly Cloudy",
+        "Mild | Humid | No Precipitation | Breezy | Overcast",
+        "Mild | Humid | No Precipitation | Windy | Mostly Cloudy",
+        "Mild | Dry | No Precipitation | Breezy | Mostly Cloudy"
+    ],
+    "Warm | Moderate Humidity | No Precipitation | No Wind | Clear": [
+        "Warm | Moderate Humidity | No Precipitation | Calm | Clear",
+        "Warm | Moderate Humidity | No Precipitation | Breezy | Clear",
+        "Warm | Moderate Humidity | No Precipitation | Windy | Clear",
+        "Warm | Moderate Humidity | No Precipitation | Gale | Clear"
+    ]
 }

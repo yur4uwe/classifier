@@ -1,0 +1,42 @@
+[
+    {
+        "outfit": [
+            {
+                "type": "t-shirt",
+                "tags": [
+                    "cotton",
+                    "short-sleeve",
+                    "crew-neck"
+                ]
+            },
+            {
+                "type": "jeans",
+                "tags": [
+                    "Denim",
+                    "Straight Fit"
+                ]
+            }
+        ],
+        "weather": {
+            "timestamps": [
+                "2023-10-01T00:00",
+                "2023-10-01T01:00",
+        ...
+            ],
+            "data": [
+                [
+                    25.0,
+                    60,
+                    10.2, ...
+                ], // 13 features per hour
+                [
+                    24.5,
+                    62,
+                    10.5, ...
+                ],
+        ...
+            ]
+        },
+        "label": 1 // 1=compatible, 0=incompatible
+    }
+]

@@ -2,6 +2,25 @@ import fs from 'fs';
 import readline from 'readline';
 import { getWeatherData } from './weather_puller.js';
 
+
+/**
+ * @typedef {{ 
+ *      temp_c: number[], 
+ *      is_day: number[], 
+ *      wind_kph: number[], 
+ *      precip_mm: number[], 
+ *      snow_cm: number[], 
+ *      humidity: number[], 
+ *      cloud: number[], 
+ *      windchill_c: number[], 
+ *      heatindex_c: number[], 
+ *      will_it_rain: number[], 
+ *      chance_of_rain: number[], 
+ *      will_it_snow: number[], 
+ *      chance_of_snow: number[] 
+ *  }} DailyWeather
+ */
+
 /**
  * @typedef {Object[][]} dayConditions
  */
@@ -135,6 +154,12 @@ class WeatherMatcher {
     }
 
     // Main matching function
+    /**
+     * 
+     * @param {DailyWeather} numericalData 
+     * @param {string[]} weatherDescriptor 
+     * @returns 
+     */
     _matchConditions(numericalData, weatherDescriptor) {
         // Extract relevant fields ignoring season (index 1)
         const [
@@ -190,13 +215,31 @@ class WeatherMatcher {
         return { matched, dayIsMatched };
     }
 
-    matchWeatherOverAllConditions(matches, numericalData, weatherDescriptors, city) {
+    /**
+     * 
+     * @param {{string : DailyWeather[]}} matches 
+     * @param {DailyWeather} numericalData 
+     * @param {string[]} weatherDescriptors 
+     * @param {string[][]} closeEnoughDescriptors
+     * @param {string} city 
+     */
+    matchWeatherOverAllConditions(matches, numericalData, weatherDescriptors, closeEnoughDescriptors, city) {
         for (const descriptor of weatherDescriptors) {
+            const descriptorString = descriptor.join(' | ');
             const { matched, dayIsMatched } = this._matchConditions(numericalData, descriptor);
 
             if (dayIsMatched && matched > 0) {
-                const descriptorString = descriptor.join(' | ');
                 matches[descriptorString].push(numericalData);
+                continue;
+            }
+
+            for (const closeDescriptorString of closeEnoughDescriptors[descriptorString]) {
+                const closeDescriptor = closeDescriptorString.split(' | ');
+                const { matched: closeMatched, dayIsMatched } = this._matchConditions(numericalData, closeDescriptor);
+
+                if (dayIsMatched && closeMatched > 0) {
+                    matches[descriptorString].push(numericalData);
+                }
             }
         }
     }

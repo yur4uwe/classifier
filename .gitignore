@@ -1,10 +1,12 @@
 node_modules/
 package-lock.json
-data/results.json
-data/directories.json
+data/results*.json
+data/directories*.json
 data/pending.json
 data/weather.txt
 data/matching.json
 data/sample.json
 outfits/
+__pycache__/
+1.txt
 .env

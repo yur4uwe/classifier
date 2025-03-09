@@ -3,22 +3,123 @@ import { turnIntoMatrix } from './weather_puller.js';
 import readline from 'readline';
 import fs from 'fs';
 
-async function findWeatherDescriptors() {
-    const descriptorsObj = JSON.parse(fs.readFileSync('data/possible_conditions.json'));
-    const descriptors = [];
+function customStringifyReplacer(key, value) {
+    if (Array.isArray(value) &&
+        value.every(item => typeof item !== 'object' && typeof item !== 'array')
+    ) {
+        return JSON.stringify(value);
+    }
+    return value;
+}
 
-    for (const descriptor of descriptorsObj) {
-        const descArr = [];
+function customStringify(obj, replacer, space) {
+    const jsonString = JSON.stringify(obj, replacer, space);
+    return jsonString.replace(/"(\[.*?\])"/g, "$1");
+}
 
-        for (const key of Object.keys(descriptor)) {
-            if (key === 'season') {
-                continue;
+function getRawDataForDescriptor(descriptor, matching) {
+    /**
+     * @type {Object[]} matchingConditions
+     */
+    const matchingConditions = matching[descriptor];
+    if (!matchingConditions || matchingConditions.length === 0) {
+        console.log("No matching conditions for descriptor: ", descriptor);
+        console.log("Matching conditions for descriptor: ", matchingConditions);
+        console.log("+-------------------------------------------------------+");
+        return null;
+    }
+
+    try {
+        const rawData = matchingConditions.reduce((accumulated, weatherConditions) => {
+            if (!weatherConditions) {
+                return accumulated;
             }
-            descArr.push(descriptor[key]);
+            if (accumulated.length >= 1000) {
+                return accumulated;
+            }
+            accumulated.push(turnIntoMatrix(weatherConditions));
+            return accumulated;
+        }, []);
+
+        return rawData;
+    } catch (error) {
+        console.log("Error parsing descriptor: ", descriptor);
+        console.log("Matching Conditions: ", matchingConditions);
+        console.log("Matching Conditions Length: ", matchingConditions.length);
+        console.log("Matching Conditions Type: ", typeof matchingConditions);
+        console.log("+-------------------------------------------------------+");
+        throw error;
+    }
+}
+
+function parseDescriptor(descriptorString) {
+    /**
+     * @type {string[]} descArr
+     */
+    const descArr = descriptorString.split(" | ");
+
+    const season = [
+        "Winter",
+        "Spring",
+        "Summer",
+        "Autumn",
+        "All Seasons",
+        "Indoor"
+    ]
+
+    const descriptor = descArr.reduce((accumulated, descr, index) => {
+        if (season.includes(descr) && index === 1) {
+            return accumulated;
+        }
+        if (descr === "Indoor") {
+            accumulated.push("Clear");
+            return accumulated;
+        }
+        if (descr === "Foggy") {
+            accumulated.push("Overcast");
+            return accumulated;
+        }
+        accumulated.push(descr);
+        return accumulated;
+    }, []).join(" | ");
+
+    return descriptor;
+}
+
+function isEverythingInPlace() {
+    const opposite = JSON.parse(fs.readFileSync('data/opposite.json'));
+    const conditions = JSON.parse(fs.readFileSync('data/possible_conditions.json'));
+
+    console.log('Checking for non-existent conditions...:');
+
+    for (const originalCondition in opposite) {
+        if (!conditions.includes(originalCondition)) {
+            console.log('Non-existent condition: ', originalCondition);
+            return false;
         }
 
-        descriptors.push(descArr);
+        const oppositeCondition = opposite[originalCondition];
+
+        if (!conditions.includes(oppositeCondition)) {
+            console.log('Non-existent opposite condition: ', oppositeCondition);
+            return false;
+        }
     }
+
+    fs.writeFileSync('data/possible_conditions.json', JSON.stringify(conditions, null, 4));
+
+    return true;
+}
+
+async function findWeatherDescriptors() {
+    /**
+     * @type {string[][]} descriptors
+     */
+    const descriptors = JSON.parse(fs.readFileSync('data/possible_conditions.json')).map((descriptor) => {
+        return descriptor.split(" | ");
+    });
+    const closeEnough = JSON.parse(fs.readFileSync('data/close_enough.json'));
+
 
     let citiesRead = 0;
     let citiesDropped = 0;
@@ -48,7 +149,8 @@ async function findWeatherDescriptors() {
 
             for (const day of numericalData) {
                 citiesRead++;
-                matcher.matchWeatherOverAllConditions(matching, day, descriptors, city);
+
+                matcher.matchWeatherOverAllConditions(matching, day, descriptors, closeEnough, city);
             }
         }
     }
@@ -57,27 +159,15 @@ async function findWeatherDescriptors() {
 
     for (const descriptor in matching) {
         console.log(`\n${descriptor} (${matching[descriptor].length} matches):`);
-        for (const match of matching[descriptor]) {
-            console.log(`  ${match.city}`);
-        }
     }
 
-    fs.writeFileSync('data/matching.json', JSON.stringify(matching, null, 2));
+    fs.writeFileSync('data/matching.json', JSON.stringify(matching, customStringifyReplacer, 2));
 }
 
 async function matchConditions() {
-    const rawPresetConditions = JSON.parse(fs.readFileSync('data/possible_conditions.json'));
-    const presetConditions = [];
-    for (const condition of rawPresetConditions) {
-        const conditionArr = [];
-        for (const key of Object.keys(condition)) {
-            if (key === 'season') {
-                continue;
-            }
-            conditionArr.push(condition[key]);
-        }
-        presetConditions.push(conditionArr);
-    }
+    const presetConditions = JSON.parse(fs.readFileSync('data/possible_conditions.json')).map((descriptor) => {
+        return descriptor.split(" | ");
+    });
 
     const actualConditions = JSON.parse(fs.readFileSync('data/condition_types.json'));
     const closeEnough = {};
@@ -116,7 +206,7 @@ async function matchConditions() {
         }
     }
 
-    fs.writeFileSync('data/close_enough.json', JSON.stringify(closeEnough, null, 2));
+    // fs.writeFileSync('data/close_enough.json', JSON.stringify(closeEnough, null, 2));
 }
 
 async function descriptorsCount() {
@@ -167,19 +257,33 @@ async function descriptorCreator() {
     }
 }
 
+function outfitCounter() {
+    const outfits = fs.readdirSync('outfits');
+    console.log(`Outfits: ${outfits.length}`);
+
+    for (const outfit of outfits) {
+        const conditions = JSON.parse(fs.readFileSync('outfits/' + outfit));
+        console.log(`${outfit}: ${conditions.length} conditions`);
+    }
+}
+
 function rawData() {
-    const results = JSON.parse(fs.readFileSync('data/results.json'));
+    const results = JSON.parse(fs.readFileSync('data/results (2).json'));
     const tags = JSON.parse(fs.readFileSync('data/tags_mapping.json')).tags;
     const types = JSON.parse(fs.readFileSync('data/types_mapping.json'));
-    const close_enough = JSON.parse(fs.readFileSync('data/close_enough.json'));
     const matching = JSON.parse(fs.readFileSync('data/matching.json'));
+    const opposite = JSON.parse(fs.readFileSync('data/opposite.json'));
 
-    for (const outfit of results) {
+    for (let i = 0; i < results.length; i++) {
+        const outfit = results[i];
         const outfitData = [];
 
         const typesData = [];
         for (const type of Object.values(outfit.types)) {
-            typesData.push(types[type]);
+            if (types[type] === undefined || types[type] === null) {
+                continue;
+            }
+            typesData.push(types[type] + 1);
         }
         outfitData.push(typesData);
 
@@ -188,71 +292,77 @@ function rawData() {
             const clothingTags = [];
 
             for (const tag of outfit.tags[imageName]) {
-                clothingTags.push(tags[tag]);
+                clothingTags.push(tags[tag] + 1);
             }
 
             tagsData.push(clothingTags);
         }
         outfitData.push(tagsData);
 
-        for (let descriptor of outfit.weatherConfig) {
+        const allPositiveConditionsForOneOutfit = [];
+        const allNegativeConditionsForOneOutfit = [];
 
-            /**
-             * @type {string[]}
-             */
-            const descArr = descriptor.split(" | ");
+        for (let descriptorString of outfit.weatherConfig) {
 
-            descriptor = [descArr[0], ...descArr.splice(2, descArr.length - 2)].join(" | ");
+            const descriptor = parseDescriptor(descriptorString);
 
-            const acceptable_descriptors = [descriptor];
+            const oppositeDescriptor = opposite[descriptor];
 
-            const closeDescriptors = close_enough[descriptor];
+            const rawPosData = getRawDataForDescriptor(descriptor, matching);
+            const rawNegData = getRawDataForDescriptor(oppositeDescriptor, matching);
 
-            if (!closeDescriptors) {
+            if (!rawPosData || !rawNegData) {
                 continue;
             }
 
-            closeDescriptors.forEach((closeDescriptor) => {
-                acceptable_descriptors.push(closeDescriptor);
-            });
+            for (const condition of rawPosData) {
+                const rawCondition = []
 
-            const numericalData = acceptable_descriptors.map((descriptor) => {
-                return matching[descriptor];
-            });
-
-            const rawData = [];
-
-            for (const descriptorSuitableConditions of numericalData) {
-                if (!descriptorSuitableConditions) {
-                    continue;
+                for (let cond of condition) {
+                    cond = JSON.parse(cond);
+                    rawCondition.push(cond);
                 }
-                for (const weatherConditions of descriptorSuitableConditions) {
-                    if (!weatherConditions) {
-                        continue;
-                    }
-                    rawData.push(turnIntoMatrix(weatherConditions));
+
+                const sample = [...outfitData, rawCondition];
+                if (typeof rawCondition[0] === 'string') {
+                    console.log('Condition is string');
+                    throw new Error('Condition is string');
                 }
+                allPositiveConditionsForOneOutfit.push(sample);
             }
 
-            const allConditionsForOneOutfit = [];
+            for (const condition of rawNegData) {
+                const rawCondition = []
 
-            for (const condition of rawData) {
-                const sample = [...outfitData, condition];
+                for (let cond of condition) {
+                    cond = JSON.parse(cond);
+                    rawCondition.push(cond);
+                }
 
-                // if (rawData.indexOf(condition) === 0) {
-                //     console.log(condition);
-                //     console.log(sample);
-                // }
-
-                allConditionsForOneOutfit.push(sample);
+                const sample = [...outfitData, rawCondition];
+                if (typeof rawCondition[0] === 'string') {
+                    console.log('Condition is string');
+                    throw new Error('Condition is string');
+                }
+                allNegativeConditionsForOneOutfit.push(sample);
             }
 
-            fs.writeFileSync("outfits/" + outfit.outfit + ".json", JSON.stringify(allConditionsForOneOutfit, null, 2));
+            // console.log("Amount of conditions for this outfit: ", allPositiveConditionsForOneOutfit.length);
         }
+
+
+        console.log("Working on outfit: ", outfit.outfit);
+        console.log("Amount of conditions for this outfit: ", allPositiveConditionsForOneOutfit.length);
+
+
+        fs.writeFileSync("outfits/pos/" + outfit.outfit + ".json", customStringify(allPositiveConditionsForOneOutfit, customStringifyReplacer, 2));
+        fs.writeFileSync("outfits/neg/" + outfit.outfit + ".json", customStringify(allNegativeConditionsForOneOutfit, customStringifyReplacer, 2));
     }
 }
 
-findWeatherDescriptors();
+// findWeatherDescriptors();
 // matchConditions();
-
-// rawData();
+// descriptorsCount();
+rawData();
+// outfitCounter();
+// console.log(isEverythingInPlace());

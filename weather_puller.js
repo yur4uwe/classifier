@@ -1,6 +1,7 @@
 
+
 /**
- * @param {Array<{ 
+ * @typedef {{ 
  *      temp_c: number, 
  *      is_day: number, 
  *      wind_kph: number, 
@@ -14,7 +15,11 @@
  *      chance_of_rain: number, 
  *      will_it_snow: number, 
  *      chance_of_snow: number 
- *  }[]>} data
+ *  }} DailyWeather
+ */
+
+/**
+ * @param {Array<DailyWeather[]>} data
  * @returns {Array<number[]>}
  */
 function turnIntoMatrix(data) {
