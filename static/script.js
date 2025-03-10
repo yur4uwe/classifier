@@ -125,7 +125,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         const button = document.createElement('button');
         button.classList.add('condition-h4');
         button.setAttribute('for', checkbox.id);
-        button.innerText = Array.from(Object.values(config)).join(' | ');
+        button.innerText = config;
         button.addEventListener('click', () => {
             checkbox.checked = !checkbox.checked;
         });
