@@ -1,0 +1,71 @@
+{
+    "dress": [
+        "skirt",
+        "top"
+    ],
+    "shirt": [
+        "t-shirt",
+        "top",
+        "sweater"
+    ],
+    "top": [
+        "shirt",
+        "t-shirt",
+        "sweater"
+    ],
+    "pants": [
+        "shorts",
+        "skirt"
+    ],
+    "shorts": [
+        "pants",
+        "skirt"
+    ],
+    "shoes": [],
+    "hat": [],
+    "scarf": [
+        "bolero"
+    ],
+    "gloves": [],
+    "socks": [
+        "stockings"
+    ],
+    "underwear": [],
+    "swimsuit": [],
+    "coat": [
+        "jacket",
+        "sweater"
+    ],
+    "jacket": [
+        "coat",
+        "vest",
+        "bolero"
+    ],
+    "sweater": [
+        "coat",
+        "jacket"
+    ],
+    "t-shirt": [
+        "shirt",
+        "top"
+    ],
+    "skirt": [
+        "pants",
+        "shorts"
+    ],
+    "suit": [
+        "jacket",
+        "pants"
+    ],
+    "bolero": [
+        "vest",
+        "scarf"
+    ],
+    "stockings": [
+        "socks"
+    ],
+    "vest": [
+        "bolero",
+        "jacket"
+    ]
+}

@@ -59,15 +59,6 @@ def reshape_weather_matrix(weather_data: WeatherData) -> WeatherTensor:
 
     return result
 
-def reshape_weather_dict(weather_data: Dict) -> WeatherTensor:
-    result: list[list[int | float]] = [[] for _ in range(24)]
-
-    for time_series in weather_data.items():
-        for hour in range(24):
-            result[hour].append(time_series[1][hour])
-
-    return result
-
 def load_file(file_name: str, pos: bool) -> list:
     if pos:
         outfit = json.load(open(os.path.join(data_directory, "pos", file_name)))
@@ -105,20 +96,21 @@ def append_data(is_pos: bool, data_files: list, weather_data: list, tags_data: l
     for file in data_files:
         outfitConditions = load_file(file.name, is_pos)
         # print(outfitConditions[0])
-        for outfit in outfitConditions:
-            weather_data.append(reshape_weather_matrix(outfit[2]))
+        for outfit_batch in outfitConditions:
+            for outfit in outfit_batch:
+                weather_data.append(reshape_weather_matrix(outfit[2]))
 
-            outfit_tags = []
-            for clothing_tags in outfit[1]:
-                tags_max_len = max(tags_max_len, len(clothing_tags))
-                outfit_tags.append(clothing_tags)
-            tags_data.append(outfit_tags)
+                outfit_tags = []
+                for clothing_tags in outfit[1]:
+                    tags_max_len = max(tags_max_len, len(clothing_tags))
+                    outfit_tags.append(clothing_tags)
+                tags_data.append(outfit_tags)
 
-            types_data.append(outfit[0])
+                types_data.append(outfit[0])
 
-            labels.append(1 if is_pos else 0)
+                labels.append(1 if is_pos else 0)
 
-            types_max_len = max(types_max_len, len(outfit[0]), len(outfit[1]))
+                types_max_len = max(types_max_len, len(outfit[0]), len(outfit[1]))
 
         # break
 
@@ -174,6 +166,15 @@ def diagnostics():
 
     print("Num categories:", num_types() + 1)
     print("Num tags:", num_tags() + 1)
+
+def reshape_weather_dict(weather_data: Dict) -> List[List[int | float]]:
+    result: list[list[int | float]] = [[] for _ in range(24)]
+
+    for time_series in weather_data.items():
+        for hour in range(24):
+            result[hour].append(time_series[1][hour])
+
+    return result
 
 def load_prod_data(user_id: str) -> tuple[ndarray, ndarray, ndarray]:
     client = MongoClient(mongo_uri)
@@ -233,13 +234,3 @@ def load_prod_data(user_id: str) -> tuple[ndarray, ndarray, ndarray]:
         types_data[i] += [0] * (types_max_len - len(types_data[i]))
 
     return np.array(weather_data), np.array(tags_data), np.array(types_data)
-
-weather, tags, types = load_prod_data("679528dd03548b85e9bca3d0")
-
-print("Weather shape:", weather.shape)
-print("Tags shape:", tags.shape)
-print("Types shape:", types.shape)
-
-print("Weather sample:", weather[0])
-print("Tags sample:", tags[0])
-print("Types sample:", types[0])

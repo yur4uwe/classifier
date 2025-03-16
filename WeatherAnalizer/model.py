@@ -33,10 +33,10 @@ class OutfitWeatherModel(keras.Model):
         self.types_flatten = keras.layers.Flatten()
         
         # Hidden layers
-        self.hidden128 = keras.layers.Dense(128, activation="relu", kernel_regularizer=keras.regularizers.l2(0.01))
+        self.hidden128 = keras.layers.Dense(128, activation="leaky_relu", kernel_regularizer=keras.regularizers.l2(0.01))
         self.dropout = keras.layers.Dropout(0.5)
-        self.hidden64 = keras.layers.Dense(64, activation="relu", kernel_regularizer=keras.regularizers.l2(0.01))
-        self.hidden32 = keras.layers.Dense(32, activation="relu", kernel_regularizer=keras.regularizers.l2(0.01))
+        self.hidden64 = keras.layers.Dense(64, activation="leaky_relu", kernel_regularizer=keras.regularizers.l2(0.01))
+        self.hidden32 = keras.layers.Dense(32, activation="leaky_relu", kernel_regularizer=keras.regularizers.l2(0.01))
 
         self.output_layer = keras.layers.Dense(1, activation="sigmoid")
 
@@ -65,6 +65,15 @@ class OutfitWeatherModel(keras.Model):
         return self.output_layer(x)
 
 weather_data, tags_data, types_data, labels = load_data()
+
+# Generate a permutation of indices
+indices = np.random.permutation(len(labels))
+
+# Apply the permutation to all data arrays
+weather_data = weather_data[indices]
+tags_data = tags_data[indices]
+types_data = types_data[indices]
+labels = labels[indices]
 
 print("Labels:", np.unique(labels, return_counts=True))
 

@@ -1,33 +1,122 @@
-
-
 /**
  * @typedef {{ 
- *      temp_c: number, 
- *      is_day: number, 
- *      wind_kph: number, 
- *      precip_mm: number, 
- *      snow_cm: number, 
- *      humidity: number, 
- *      cloud: number, 
- *      windchill_c: number, 
- *      heatindex_c: number, 
- *      will_it_rain: number, 
- *      chance_of_rain: number, 
- *      will_it_snow: number, 
- *      chance_of_snow: number 
+ *      temp_c: number[], 
+ *      is_day: number[], 
+ *      wind_kph: number[], 
+ *      precip_mm: number[], 
+ *      snow_cm: number[], 
+ *      humidity: number[], 
+ *      cloud: number[], 
+ *      windchill_c: number[], 
+ *      heatindex_c: number[], 
+ *      will_it_rain: number[], 
+ *      chance_of_rain: number[], 
+ *      will_it_snow: number[], 
+ *      chance_of_snow: number[] 
  *  }} DailyWeather
  */
 
+const tolerance = {
+    temp_c: {
+        range: 2,
+        type: "float"
+    },
+    is_day: {
+        type: "non-tolerant"
+    },
+    wind_kph: {
+        range: 2,
+        type: "float-non-negative"
+    },
+    precip_mm: {
+        range: 2,
+        type: "float-non-negative"
+    },
+    snow_cm: {
+        range: 2,
+        type: "float-non-negative"
+    },
+    humidity: {
+        range: 5,
+        type: "int"
+    },
+    cloud: {
+        range: 5,
+        type: "int"
+    },
+    windchill_c: {
+        range: 2,
+        type: "float"
+    },
+    heatindex_c: {
+        range: 2,
+        type: "float"
+    },
+    will_it_rain: {
+        type: "non-tolerant"
+    },
+    chance_of_rain: {
+        range: 5,
+        type: "int"
+    },
+    will_it_snow: {
+        type: "non-tolerant"
+    },
+    chance_of_snow: {
+        range: 5,
+        type: "int"
+    }
+};
+
 /**
- * @param {Array<DailyWeather[]>} data
+ * @param {DailyWeather} data
  * @returns {Array<number[]>}
  */
-function turnIntoMatrix(data) {
+function turnIntoMatrix(data, augment = false) {
     const matrix = [];
     for (const key in data) {
-        const value = data[key];
-        matrix.push(value);
+        /**
+         * @type {number[]} values
+         */
+        let values = data[key];
+        const type = tolerance[key].type.split("-");
+        if (augment && type.join("-") !== "non-tolerant") {
+
+            for (let i = 0; i < values.length; i++) {
+                if (key === "precip_mm" && data["will_it_rain"][i] === 0 ||
+                    key === "snow_cm" && data["will_it_snow"][i] === 0 ||
+                    key === "chance_of_rain" && data["will_it_rain"][i] === 0 ||
+                    key === "chance_of_snow" && data["will_it_snow"][i] === 0) {
+                    values[i] = 0;
+                    continue;
+                }
+
+                const error = (Math.random() * 2 - 1) * tolerance[key].range;
+                if (type[0] === "int") {
+                    if (values[i] + Math.round(error) < 0) {
+                        values[i] = 0;
+                    } else if (values[i] + Math.round(error) > 100) {
+                        values[i] = 100;
+                    } else {
+                        values[i] += Math.round(error);
+                    }
+                } else if (type[0] === "float") {
+                    values[i] += error;
+
+                    if (type.join("-") === "float-non-negative" && values[i] < 0) {
+                        values[i] = 0;
+                    }
+
+                    values[i] = Math.round(values[i] * 10) / 10; // Round to 1 decimal place
+                }
+            }
+
+            matrix.push(values);
+        } else {
+            matrix.push(values);
+        }
     }
+
     return matrix;
 }
 
@@ -50,21 +139,7 @@ async function getWeatherData(location) {
 
 function weatherData(data) {
     /**
-     * @type {Array<{ 
-     *      temp_c: number, 
-     *      is_day: number, 
-     *      wind_kph: number, 
-     *      precip_mm: number, 
-     *      snow_cm: number, 
-     *      humidity: number, 
-     *      cloud: number, 
-     *      windchill_c: number, 
-     *      heatindex_c: number, 
-     *      will_it_rain: number, 
-     *      chance_of_rain: number, 
-     *      will_it_snow: number, 
-     *      chance_of_snow: number 
-     *  }[]>}
+     * @type {Array<DailyWeather[]>}
      */
     let filteredData = [];
     for (const [key, value] of Object.entries(data)) {
@@ -129,12 +204,38 @@ function weatherData(data) {
     return sequentialData;
 }
 
-// const weather = await (async () => {
-//     const weatherData = await getWeatherData("London");
-//     console.log(weatherData);
-//     return turnIntoMatrix(weatherData);
-// })();
+function printWeatherData(data, structure = "object") {
+    if (structure === "object") {
+        for (const key in data) {
+            console.log(key, ":", data[key]);
+        }
+    } else if (structure === "matrix") {
+        for (const values of data) {
+            console.log(values);
+        }
+    }
+}
 
-// console.log("Weather:", weather);
+// (async () => {
+//     const weatherData = await getWeatherData("London");
+//     // console.log("Raw Weather Data (" + typeof weatherData[0] + "):");
+//     // printWeatherData(weatherData[0]);
+//     const augmentedData = turnIntoMatrix(weatherData[0], true);
+//     // console.log("Augmented Data (" + typeof augmentedData + "):");
+//     // printWeatherData(augmentedData, "matrix");
+//     const notAugmentedData = turnIntoMatrix(weatherData[0], false);
+//     // console.log("Not Augmented Data (" + typeof augmentedData + "):");
+//     // printWeatherData(notAugmentedData, "matrix");
+
+//     for (let i = 0; i < augmentedData.length; i++) {
+//         for (let j = 0; j < augmentedData[i].length; j++) {
+//             if (augmentedData[i][j] !== notAugmentedData[i][j]) {
+//                 console.log("Augmented data differs from not augmented data at index", i, j);
+//             }
+//         }
+//         // console.log("Augmented data    :", augmentedData[i].join(", "));
+//         // console.log("Not augmented data:", notAugmentedData[i].join(", "));
+//     }
+// })();
 
 export { getWeatherData, turnIntoMatrix };
